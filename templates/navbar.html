@@ -1,0 +1,38 @@
+
+{% load static %}
+
+<header class="header">
+    <a href="/" class="logo"><i class="fas fa-phone-volume"></i>Sajilo Sewa</a>
+
+
+    <!-- <div class="fas fa-bars"></div> -->
+
+    <nav class="navbar">
+        <a href="/"><i class="fas fa-home"></i>Home</a>
+        <a href="#category"><i class="fas fa-th-large"></i>Category</a>
+        <a href="#service"><i class="fab fa-servicestack"></i>Service</a>
+        <a href="#team"><i class="fas fa-users"></i>Team</a>
+        <a href="#about"><i class="fas fa-address-card"></i>About</a>
+        <a href="{% url 'Signup' %}"><i class="fas fa-sign-in-alt"></i>Sign Up</a>
+    </nav>
+
+    <div class="icons">
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-user" id="login-btn"></div>
+    </div>
+
+    <form action="" class="search-form">
+        <input type="search" id="search-box" placeholder="search here...">
+        <label for="search-box" class="fas fa-search"></label>
+    </form>
+
+    <div class="shopping-cart">
+        <div>
+            <img src="" alt="">
+        </div>
+    </div>
+
+
+</header>
