@@ -17,7 +17,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             Profile.objects.create(user=user, firstname=user.first_name, lastname=user.last_name, email=user.email)
-            messages.add_message(request, messages.success, 'User created Successfully')
+            messages.add_message(request, messages.SUCCESS, 'User created Successfully')
             return redirect('/login')
         else:
             messages.add_message(request, messages.ERROR, "Failed to create an account, Check carefully and Try Again!")

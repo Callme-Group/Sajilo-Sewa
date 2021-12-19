@@ -11,6 +11,7 @@ from django.db.models.signals import post_save
 
 
 class Profile(models.Model): #Model to create profile for users
+    objects = None
     user = models.OneToOneField(User,null=True,on_delete=models.CASCADE)
     firstname = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)
