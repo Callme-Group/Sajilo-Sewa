@@ -4,39 +4,63 @@
 {% block title %}Login{% endblock %}
 {% block content %}
 
-<section class="login py-5 bg-light">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-lg-5">
-                <img src="{% static 'images/login s.svg' %}" class="img-fluid" alt="">
+    <div class="container col-md-10 mx-auto col-lg-3 mt-5 py-5">
+        <h1 class="display-5 text-center text-danger"> Sajilo Sewa</h1>
+        <h5 class="text-center">Login page</h5>
+        <form class="mt-5" action="" method="post">
+            {% csrf_token %}
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="text" name="username" id="form2Example1" class="form-control"/>
+                <label class="form-label" for="form2Example1">Username</label>
             </div>
-            <div class="col-lg-7 text-center py-5">
-                <h1 class="animate__animated animate__heartBeat animate__infinite">Welcome Back</h1>
 
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <div class="form-row py-3 pt-5">
-                        <div class="offset-1 col-lg-10">
-                            <input type="text" class="inp" placeholder="UserName" name="username">
-                        </div>
-                    </div>
-                    <div class="form-row py-3">
-                        <div class="offset-1 col-lg-10">
-                            <input type="password" class="inp" placeholder="Password" name="password">
-                        </div>
-                    </div>
-                    <div class="form-row py-3">
-                        <div class="offset-1 col-lg-10">
-                            <button class="btn1">Login</button>
-                        </div>
-                    </div>
-                </form>
-                <p> Or Login with</p>
-                <span><i class="fab fa-facebook"></i></span>
-                <span><i class="fab fa-google-plus"></i></span>
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" name="password" id="form2Example2" class="form-control"/>
+                <label class="form-label" for="form2Example2">Password</label>
             </div>
-        </div>
+
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked/>
+                        <label class="form-check-label" for="form2Example34"> Remember me </label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <!-- Simple link -->
+                    <a href="#!">Forgot password?</a>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>Not a member? <a href="/signup">Register</a></p>
+                <p>or sign up with:</p>
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                </button>
+            </div>
+        </form>
     </div>
-</section>
 
 {% endblock %}

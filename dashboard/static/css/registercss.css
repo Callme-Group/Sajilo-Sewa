@@ -1,8 +1,8 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+/**{*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    box-sizing: border-box;*/
+/*}*/
 
 
 .row{
@@ -22,14 +22,14 @@
     font-family: 'Twinkle Star', cursive;
 }
 
-.inp{
-    height: 10px;
-    width: 70%;
-    border: none;
-    outline: none;
-    border-radius: 60px;
+/*.inp{*/
+/*    height: 10px;*/
+/*    width: 70%;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    border-radius: 60px;*/
 
-}
+/*}*/
 
 .btn1{
     height: 50px;

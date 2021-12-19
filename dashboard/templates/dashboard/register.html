@@ -1,69 +1,52 @@
 {% extends 'layout.html' %}
+{% load bootstrap %}
 {% load static %}
 
 {% block title %}registration{% endblock %}
 {% block content %}
 
+    <div class="container col-md-10 mx-auto col-lg-3 mt-2 py-5">
+        <h1 class="display-5 text-center text-danger">Create New User</h1>
+        <h5 class="text-center">Customer Department</h5>
+        <form action="" method="post" class="mt-4">
+            {% csrf_token%}
+            {{ form | bootstrap }}
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row m-1">
+                <div class="col d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked/>
+                        <label class="form-check-label" for="form2Example34">Wanna see our future update hah?</label>
+                    </div>
+                </div>
 
-
-<section class="login py-5 bg-light">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-lg-5">
-                <img src="{% static 'images/register.svg' %}" class="img-fluid" alt="">
             </div>
 
-            <div class="col-lg-7 text-center py-5">
-                <h1 class="animate__animated animate__heartBeat animate__infinite">Welcome !!</h1>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
 
-                <form action="" method="post">
-                     {% csrf_token%}
-                    <div class="form-row py-3 pt-5">
-                        <div class="offset-1 col-lg-10">
-                         {{form.first_name}}
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>or sign up with:</p>
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
 
-                        </div>
-                    </div>
-                    <div class="form-row py-3 pt-5">
-                        <div class="offset-1 col-lg-10">
-                           {{form.last_name}}
-                        </div>
-                    </div>
-                    <div class="form-row py-3 pt-5">
-                        <div class="offset-1 col-lg-10">
-                           {{form.username}}
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                </button>
 
-                        </div>
-                    </div>
-                    <div class="form-row py-3 pt-5">
-                        <div class="offset-1 col-lg-10">
-                           {{form.email}}
-                        </div>
-                    </div>
-                    <div class="form-row py-3 pt-5">
-                        <div class="offset-1 col-lg-10">
-                          {{form.password1}}
-                        </div>
-                    </div>
-                    <div class="form-row py-3">
-                        <div class="offset-1 col-lg-10">
-                           {{form.password2}}
-                        </div>
-                    </div>
-                     {{form.errors}}
-                    <div class="form-row py-3">
-                        <div class="offset-1 col-lg-10">
-                            <button class="btn1">Register</button>
-                        </div>
-                    </div>
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                </button>
 
-                </form>
-                <p> Or Login with</p>
-                <span><i class="fab fa-facebook"></i></span>
-                <span><i class="fab fa-google-plus"></i></span>
+                <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                </button>
             </div>
-        </div>
+        </form>
     </div>
-</section>
+
 
 {% endblock %}

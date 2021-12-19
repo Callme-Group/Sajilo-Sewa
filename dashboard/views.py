@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import RegisterUserFrom
 from django.contrib import messages
@@ -39,15 +40,19 @@ def login(request):
         if user is not None:
             if not user.is_staff:
                 auth.login(request, user)
-                return redirect("/signup")
+                # return redirect("/signup")
+                return HttpResponse("Success")
 
             elif user.is_staff:
                 auth.login(request, user)
-                return redirect('/admin')
+                return HttpResponse("Success")
+
+                # return redirect('/admin')
 
         else:
             messages.add_message(request, messages.ERROR, "Invalid Username and Password!")
-            return render(request, 'dashboard/login.html')
+            # return render(request, 'dashboard/login.html')
+            return HttpResponse("Failed")
 
     else:
         return render(request, 'dashboard/login.html')
