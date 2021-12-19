@@ -3,11 +3,7 @@
 
 {% block title %}registration{% endblock %}
 {% block content %}
-<style>
-    .he
 
-    }
-</style>
 
 
 <section class="login py-5 bg-light">
@@ -54,7 +50,7 @@
                            {{form.password2}}
                         </div>
                     </div>
-
+                     {{form.errors}}
                     <div class="form-row py-3">
                         <div class="offset-1 col-lg-10">
                             <button class="btn1">Register</button>

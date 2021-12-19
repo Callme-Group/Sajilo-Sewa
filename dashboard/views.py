@@ -39,7 +39,7 @@ def login(request):
         if user is not None:
             if not user.is_staff:
                 auth.login(request, user)
-                return redirect("/")
+                return redirect("/signup")
 
             elif user.is_staff:
                 auth.login(request, user)
