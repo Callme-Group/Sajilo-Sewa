@@ -1,32 +1,52 @@
 {% extends 'layout.html' %}
 {% load static %}
 
-{% block title %}Login{% endblock %}
+{% block title %}registration{% endblock %}
 {% block content %}
 
 <section class="login py-5 bg-light">
     <div class="container">
         <div class="row g-0">
             <div class="col-lg-5">
-                <img src="{% static 'images/login s.svg' %}" class="img-fluid" alt="">
+                <img src="{% static 'images/register.svg' %}" class="img-fluid" alt="">
             </div>
             <div class="col-lg-7 text-center py-5">
-                <h1 class="animate__animated animate__heartBeat animate__infinite">Welcome Back</h1>
+                <h1 class="animate__animated animate__heartBeat animate__infinite">Welcome !!</h1>
 
                 <form>
+                    <div class="form-row py-3 pt-5">
+                        <div class="offset-1 col-lg-10">
+                            <input type="text" class="inp" placeholder="FirstName">
+                        </div>
+                    </div>
+                    <div class="form-row py-3 pt-5">
+                        <div class="offset-1 col-lg-10">
+                            <input type="text" class="inp" placeholder="LastName">
+                        </div>
+                    </div>
                     <div class="form-row py-3 pt-5">
                         <div class="offset-1 col-lg-10">
                             <input type="text" class="inp" placeholder="UserName">
                         </div>
                     </div>
-                    <div class="form-row py-3">
+                    <div class="form-row py-3 pt-5">
+                        <div class="offset-1 col-lg-10">
+                            <input type="text" class="inp" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-row py-3 pt-5">
                         <div class="offset-1 col-lg-10">
                             <input type="password" class="inp" placeholder="Password">
                         </div>
                     </div>
                     <div class="form-row py-3">
                         <div class="offset-1 col-lg-10">
-                            <button class="btn1">Login</button>
+                            <input type="password" class="inp" placeholder="ConfirmPassword">
+                        </div>
+                    </div>
+                    <div class="form-row py-3">
+                        <div class="offset-1 col-lg-10">
+                            <button class="btn1">Register</button>
                         </div>
                     </div>
                 </form>
