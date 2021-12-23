@@ -41,11 +41,15 @@ def login(request):
             if not user.is_staff:
                 auth.login(request, user)
                 # return redirect("/signup")
-                return HttpResponse("Success")
+                messages.success(request, "Welcome ...")
+                return redirect("/signup")
+                #return HttpResponse("Success")
 
             elif user.is_staff:
                 auth.login(request, user)
-                return HttpResponse("Success")
+                messages.success(request, "Welcome to ----.")
+                return redirect('/admin')
+                #return HttpResponse("Success")
 
                 # return redirect('/admin')
 
