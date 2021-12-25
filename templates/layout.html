@@ -48,6 +48,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% if messages %}
         {% for m in messages %}
+            {% if m.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
             <script>
                 Swal.fire({
                     "title": "Success",
@@ -55,6 +56,16 @@
                     "icon": "success"
                 })
             </script>
+            {% endif%}
+            {% if m.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <script>
+                Swal.fire({
+                    "title": "Error",
+                    "text": "{{ m }}",
+                    "icon": "error"
+                })
+            </script>
+            {% endif %}
     {% endfor %}
 {% endif %}
 
