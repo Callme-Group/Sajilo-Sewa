@@ -1,10 +1,47 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block content %}
 
-<h1>welcome  Home</h1>
 
+<section id="f1" class="position-relative">
+    <img src="{% static 'images/bg.jpg' %}" class="bgg position-absolute w-100 h-100" alt="">
+    <img src="{% static 'images/bg1.jpg' %}" class="bgg1 position-absolute w-100 h-100" alt="">
+    <img src="{% static 'images/bg3.jpg' %}" class="bgg3 position-absolute w-100 h-100" alt="">
+    <div class="f1-container">
+      <h3><strong>सजिलो सेवा</strong></h3>
+      <h1>सेवा हाम्रो साथ तपाईंको</h1>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div>
+</section>
 
+<div class="sections">
+		<div class="container">
+			<div class="content-section">
+				<div class="title">
+					<h1>About Us</h1>
+				</div>
+				<div class="content">
+					<h3>Lorem ipsum dolor sit amet, consectetur adipisicing</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat.</p>
+					<div class="button">
+						<a href="">Read More</a>
+					</div>
+				</div>
+				<div class="social">
+					<a href=""><i class="fab fa-facebook-f"></i></a>
+					<a href=""><i class="fab fa-twitter"></i></a>
+					<a href=""><i class="fab fa-instagram"></i></a>
+				</div>
+			</div>
+			<div class="image-section">
+				<img src="{% static 'images/about.jpg' %}">
+			</div>
+		</div>
+	</div>
 
 
 {% endblock %}
