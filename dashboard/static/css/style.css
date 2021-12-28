@@ -339,9 +339,10 @@ body{
   padding: 0 15px;
   z-index: 101;
 }
+
 #f1 h3 {
   background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  color: #e43c5c;
   font-size: 26px;
   padding: 10px 30px;
   margin-bottom: 30px;
@@ -353,7 +354,11 @@ body{
   font-weight: 700;
   line-height: 56px;
   text-transform: uppercase;
-  color: #fff;
+  color: #e43c5c;
+}
+
+#f1 a{
+    text-decoration: none;
 }
 
 
@@ -370,6 +375,7 @@ body{
   transition: 0.5s;
   border: 2px solid #fff;
   color: #fff;
+  background: #2f00ff;
 }
 
 #f1 .btn-get-started:hover{
