@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrapform',
     'social_django',
+    'captcha',
 
 
 
@@ -158,3 +159,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'khadka03adrsh@gmail.com'
 EMAIL_HOST_PASSWORD = 'Kdk@03adrsh'
+
+
+RECAPTCHA_PUBLIC_KEY ='6LcNxNIdAAAAAN-ZtETKNolYU5tazRjimwXBl_Jb'
+RECAPTCHA_PRIVATE_KEY ='6LcNxNIdAAAAAJKXqGrnfMz3wo6CxghDfmt8jRH-'
