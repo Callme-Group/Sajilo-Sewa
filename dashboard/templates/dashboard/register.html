@@ -6,49 +6,101 @@
 
 {% block title %}Registration{% endblock %}
 {% block content %}
+<section class="h-75 b-0 g-0 border-3 ">
+        <div class="container py-5 h-100 ">
+          <div class="row d-flex justify-content-center align-content-center h-75 b-0 border-0 shadow">
+            <div class="col ">
 
-    <div class="container col-md-10 mx-auto col-lg-3 mt-2 py-5">
-        <h1 class="display-5 text-center text-danger">Create New User</h1>
-        <h5 class="text-center">Customer Department</h5>
-        <form action="" method="post" class="mt-4">
-            {% csrf_token%}
-            {{ form | bootstrap }}
-            <!-- 2 column grid layout for inline styling -->
-            <div class="row m-1">
-                <div class="col d-flex justify-content-center">
-                    <!-- Checkbox -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked/>
-                        <label class="form-check-label" for="form2Example34">Wanna see our future update hah?</label>
+                <div class="row g-0  w-100 py-5 ">
+                  <div class="col-xl-6 col-lg-5 col-xs-5 d-none d-xl-block border-0 ">
+                    <img
+                      src="{% static 'images/registration.jpg' %}"
+                      class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
+                    />
+                  </div>
+                  <div class="col-xl-5 col-lg-7 col-xs-5 border-0 m-lg-auto">
+                    <div class="card-body p-md-5 text-black">
+                      <h3 class="mb-5 text-uppercase text-center">Registration Form</h3>
+
+                      <form method="post" action="">
+                          {% csrf_token %}
+
+
+                      <div class="row border-0">
+                        <div class="col-md-6 mb-4 col-xs-6">
+                          <div class="form-outline mb-4">
+                              {{form.first_name}}
+                                <label class="form-label" for="form2Example1">First name</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6 mb-4">
+
+                           <div class="form-outline mb-4">
+                                 {{form.last_name}}
+                                <label class="form-label" for="form2Example1">Last name</label>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 mb-4 col-xs-6">
+                           <div class="form-outline mb-4">
+                                {{form.username}}
+                                <label class="form-label" for="form2Example1">Username</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4 col-xs-6">
+                           <div class="form-outline mb-4">
+                               {{form.email}}
+                                <label class="form-label" for="form2Example1">Email</label>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 mb-3 col-xs-6">
+                          <div class="form-outline mb-2">
+                              {{form.password1}}
+                                <label class="form-label" for="form2Example1">Password</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-3 col-xs-6">
+                           <div class="form-outline mb-2">
+                               {{form.password2}}
+                                <label class="form-label" for="form2Example1">Confirm Password</label>
+                            </div>
+                        </div>
+                      </div>
+
+                       {% for field, error in form.errors.items %}
+                            <div class="alert alert-danger my-3 p-1" role="alert">
+                                {{ error|striptags }}
+                            </div>
+                        {% endfor %}
+                       <button type="submit" class="btn btn-primary btn-block mb-2">Sign in</button>
+
+                      <div class="text-center">
+                        <p>or sign up with:</p>
+                        <a type="button" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-google"></i></a>
+
+                        <a type="button" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-facebook"></i></a>
+
+                        <a type="button" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-github"></i></a>
+
+
+                        <a type="button" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-twitter"></i></a>
+                      </div>
+                    </form>
                     </div>
+
+                  </div>
                 </div>
 
             </div>
-
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
-
-            <!-- Register buttons -->
-            <div class="text-center">
-                <p>or sign up with:</p>
-<!--                <button type="button" class="btn btn-primary btn-floating mx-1">-->
-<!--                    <i class="fab fa-facebook-f"></i>-->
-<!--                </button>-->
-        <a href="{% url 'social:begin' 'facebook' %}">Facebook</a>
-                <button type="button" class="btn btn-primary btn-floating mx-1" >
-                </button>
-                 <a href="{% url 'social:begin' 'google-oauth2' %}">Google</a>
-
-                <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                </button>
-
-                <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-github"></i>
-                </button>
-            </div>
-        </form>
-    </div>
+          </div>
+        </div>
+      </section>
 
 
 {% endblock %}

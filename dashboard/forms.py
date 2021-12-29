@@ -8,13 +8,13 @@ from captcha.widgets import ReCaptchaV2Checkbox
 
 class RegisterUserFrom(UserCreationForm):
     """Form for creating Users"""
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'inp','placeholder':'Firstname'}))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'inp','placeholder':'lastname'}))
-    email = forms.EmailField(validators=[validators.EmailValidator], widget=forms.TextInput(attrs={'class': 'inp','placeholder':'email'}))
-    username = forms.CharField(validators=[validators.MinLengthValidator(3)], widget=forms.TextInput(attrs={'class': 'inp','placeholder':'username'}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'inp','placeholder':'password'}))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'inp','placeholder':'Confirm password'}))
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(validators=[validators.EmailValidator], widget=forms.TextInput(attrs={'class': 'form-control'}))
+    username = forms.CharField(validators=[validators.MinLengthValidator(3)], widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    # captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
 
     class Meta:
