@@ -5,63 +5,55 @@
 
 {% block content %}
 
-    <div class="container col-md-10 mx-auto col-lg-3 mt-5 py-5">
-        <h1 class="display-5 text-center text-danger"> Sajilo Sewa</h1>
-        <h5 class="text-center">Login page</h5>
-        <form class="mt-5" action="" method="post">
-            {% csrf_token %}
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-                <input type="text" name="username" id="form2Example1" class="form-control"/>
-                <label class="form-label" for="form2Example1">Username</label>
-            </div>
+    <section class="h-75 b-0 g-0 border-3 ">
+        <div class="container py-5 h-75 ">
+          <div class="row d-flex justify-content-center align-content-center h-75 b-0 border-0 shadow">
+            <div class="col ">
 
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-                <input type="password" name="password" id="form2Example2" class="form-control"/>
-                <label class="form-label" for="form2Example2">Password</label>
-            </div>
+                <div class="row g-0  w-100 py-5 ">
+                  <div class="col-xl-6 col-lg-5 col-xs-5 d-none d-xl-block border-0 h-75 ">
+                    <img
+                      src="{% static 'images/login1.png' %}"
+                      class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
+                    />
+                  </div>
+                  <div class="col-xl-5 col-lg-7 col-xs-5 border-0 m-lg-auto shadow">
+                    <div class="card-body p-md-5 text-black">
+                        <h1 class="display-5 text-center text-secondary"> Sajilo Sewa</h1>
+                      <h3 class="mb-5 text-center">Sign In</h3>
+                      <form  method="post" action="">
+                          {% csrf_token %}
+                        <div class="col-md-7 mb-4 col-xs-6 m-auto   ">
+                            <div class="form-outline mb-4">
+                                <input type="text" name="username" id="form2Example1"  class="form-control"/>
+                                <label class="form-label" for="form2Example1">Username</label>
+                            </div>
+                        </div>
 
-            <!-- 2 column grid layout for inline styling -->
-            <div class="row mb-4">
-                <div class="col d-flex justify-content-center">
-                    <!-- Checkbox -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked/>
-                        <label class="form-check-label" for="form2Example34"> Remember me </label>
+                        <div class=" col-md-7 mb-4 col-xs-6 m-auto ">
+                            <div class="form-outline mb-4">
+                                <input type="text" name="password" id="form2Example1" class="form-control"/>
+                                <label class="form-label" for="form2Example1">Password</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 col-xs-6 m-auto  ">
+                            <button type="submit" class="btn btn-primary w-100 ">Log In</button>
+                          </div>
+
+
+                    </form>
                     </div>
+
+                  </div>
                 </div>
 
-                <div class="col">
-                    <!-- Simple link -->
-                    <a href="{% url 'reset_password' %}">Forgot password?</a>
-                </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-danger btn-block mb-4">Sign in</button>
 
-            <!-- Register buttons -->
-            <div class="text-center">
-                <p>Not a member? <a href="/signup">Register</a></p>
-                <p>or sign up with:</p>
-                <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
-                </button>
-
-                <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-google"></i>
-                </button>
-
-                <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                </button>
-
-                <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-github"></i>
-                </button>
-            </div>
-        </form>
-    </div>
 
 {% endblock %}

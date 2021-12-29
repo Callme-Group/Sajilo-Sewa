@@ -50,9 +50,6 @@ def login(request):
                 messages.success(request, "Welcome to ----.")
                 return redirect('/admin')
                 #return HttpResponse("Success")
-
-
-
         else:
             messages.add_message(request, messages.ERROR, "Invalid Username and Password!")
             # return render(request, 'dashboard/login.html')

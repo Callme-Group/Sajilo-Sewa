@@ -19,9 +19,9 @@
                       style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
                     />
                   </div>
-                  <div class="col-xl-5 col-lg-7 col-xs-5 border-0 m-lg-auto">
+                  <div class="col-xl-5 col-lg-7 col-xs-5 border-0 m-lg-auto shadow">
                     <div class="card-body p-md-5 text-black">
-                      <h3 class="mb-5 text-uppercase text-center">Registration Form</h3>
+                      <h3 class="mb-5  text-center">Registration Form</h3>
 
                       <form method="post" action="">
                           {% csrf_token %}
@@ -74,7 +74,7 @@
                       </div>
 
                        {% for field, error in form.errors.items %}
-                            <div class="alert alert-danger my-3 p-1" role="alert">
+                            <div class="alert alert-danger my-3 p-1 w-100 text-center" role="alert">
                                 {{ error|striptags }}
                             </div>
                         {% endfor %}
@@ -82,14 +82,11 @@
 
                       <div class="text-center">
                         <p>or sign up with:</p>
-                        <a type="button" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-google"></i></a>
+                          <hr>
+                        <a type="button" href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-google"></i></a>
 
-                        <a type="button" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-facebook"></i></a>
+                        <a type="button" href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-facebook"></i></a>
 
-                        <a type="button" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-github"></i></a>
-
-
-                        <a type="button" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-twitter"></i></a>
                       </div>
                     </form>
                     </div>
@@ -101,6 +98,7 @@
           </div>
         </div>
       </section>
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 {% endblock %}
