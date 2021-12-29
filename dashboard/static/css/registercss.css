@@ -1,11 +1,14 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+/**{*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    box-sizing: border-box;*/
+/*}*/
 
-.login{
-    height: 89vh;
+
+.row{
+     background: light-white;
+     border-radius: 30px;
+     box-shadow: 12px 12px 22px;
 }
 
 .login img{
@@ -19,17 +22,14 @@
     font-family: 'Twinkle Star', cursive;
 }
 
-.inp{
-    height: 50px;
-    width: 70%;
-    border: none;
-    outline: none;
-    border-radius: 60px;
-    box-shadow: -1px 1px 30px -10px rgba(0,0,0,0.75);
--webkit-box-shadow: -1px 1px 30px -10px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 1px 30px -10px rgba(0,0,0,0.75);
-}
+/*.inp{*/
+/*    height: 10px;*/
+/*    width: 70%;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    border-radius: 60px;*/
 
+/*}*/
 
 .btn1{
     height: 50px;

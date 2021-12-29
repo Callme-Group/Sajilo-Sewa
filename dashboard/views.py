@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import RegisterUserFrom
 from django.contrib import messages
@@ -9,8 +10,6 @@ from django.contrib.auth.models import User, auth
 def dashboard(request):
     return render(request, 'dashboard/dashboard.html')
 
-def about(request):
-    return render(request, 'dashboard/about.html')
 
 def register(request):
     form = RegisterUserFrom()
@@ -19,7 +18,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             Profile.objects.create(user=user, firstname=user.first_name, lastname=user.last_name, email=user.email)
-            messages.add_message(request, messages.success, 'User created Successfully')
+            messages.add_message(request, messages.SUCCESS, 'User created Successfully')
             return redirect('/login')
         else:
             messages.add_message(request, messages.ERROR, "Failed to create an account, Check carefully and Try Again!")
@@ -41,15 +40,22 @@ def login(request):
         if user is not None:
             if not user.is_staff:
                 auth.login(request, user)
-                return redirect("/")
+                # return redirect("/signup")
+                messages.success(request, "Welcome ...")
+                return redirect("/signup")
+                #return HttpResponse("Success")
 
             elif user.is_staff:
                 auth.login(request, user)
+                messages.success(request, "Welcome to ----.")
                 return redirect('/admin')
-
+                #return HttpResponse("Success")
         else:
             messages.add_message(request, messages.ERROR, "Invalid Username and Password!")
-            return render(request, 'dashboard/login.html')
+            # return render(request, 'dashboard/login.html')
+            return HttpResponse("Failed")
 
     else:
         return render(request, 'dashboard/login.html')
+
+
