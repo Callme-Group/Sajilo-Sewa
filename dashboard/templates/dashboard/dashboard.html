@@ -1,10 +1,116 @@
 {% extends 'layout.html' %}
 
+{% load static %}
+
 {% block content %}
 
-<h1>welcome  Home</h1>
+
+<section id="f1" class="position-relative p-0">
+    <img src="{% static 'images/bg.jpg' %}" class="bgg position-absolute w-100 h-100" alt="">
+    <img src="{% static 'images/bg1.jpg' %}" class="bgg1 position-absolute w-100 h-100" alt="">
+    <img src="{% static 'images/bg3.jpg' %}" class="bgg3 position-absolute w-100 h-100" alt="">
+    <div class="f1-container">
+      <h3><strong>सजिलो सेवा</strong></h3>
+      <h1>सेवा हाम्रो साथ तपाईंको</h1>
+      <a href="#about" class="btn-get-started">Get Started</a>
+    </div>
+</section>
+
+<!--<div class="container" data-aos="fade-up">-->
+<!--        <div class="row">-->
+<!--          <div class="col-md-12">-->
+<!--            <h3 class="section-title">About Us</h3>-->
+<!--            <div class="section-title-divider"></div>-->
+<!--            <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--</div>-->
+
+<div class="about-section">
+
+    <div class="inner-container">
+        <h1>About Us</h1>
+        <p class="text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit ducimus, enim inventore earum, eligendi nostrum pariatur necessitatibus eius dicta a voluptates sit deleniti autem error eos totam nisi neque voluptates sit deleniti autem error eos totam nisi neque.
+        </p>
+        <div class="skills">
+            <span>Web Design</span>
+            <span>Photoshop & Illustrator</span>
+            <span>Coding</span>
+        </div>
+    </div>
+</div>
 
 
+<section id="services-section" class="services-section">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Services</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                  <div class="bg-image hover-overlay ripple" >
+                    <img
+                      src="{% static 'images/house1.jpg' %}" class="img-fluid"/>
+                    <a href="#!">
+                      <div class="mask"></div>
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title">House</h3>
+                    <p class="c-paragraph inactive-color">
+                      Some quick example text to build on the card title and make up the bulk of the
+                      card's content.
+                    </p>
+                    <a href="#!" class="btn btn-primary">Read More</a>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img
+                      src="{% static 'images/flat.jpg' %}" class="img-fluid"/>
+                    <a href="#!">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title">Flat</h3>
+                    <p class="c-paragraph inactive-color">
+                      Some quick example text to build on the card title and make up the bulk of the
+                      card's content.
+                    </p>
+                    <a href="#!" class="btn btn-primary">Read </a>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img
+                      src="{% static 'images/plumbing.jpg' %}" class="img-fluid"/>
+                    <a href="#!">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title">Household Materials</h3>
+                    <p class="c-paragraph inactive-color">
+                      Some quick example text to build on the card title and make up the bulk of the
+                      card's content.
+                    </p>
+                    <a href="#!" class="btn btn-primary">Read More</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 {% endblock %}
