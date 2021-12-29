@@ -6,11 +6,15 @@
 {% block content %}
 
     <section class="h-75 b-0 g-0 border-3 ">
+
         <div class="container py-5 h-75 ">
-          <div class="row d-flex justify-content-center align-content-center h-75 b-0 border-0 shadow">
+
+          <div class="row d-flex justify-content-center align-content-center h-75 b-0 border-0 ">
+
             <div class="col ">
 
                 <div class="row g-0  w-100 py-5 ">
+
                   <div class="col-xl-6 col-lg-5 col-xs-5 d-none d-xl-block border-0 h-75 ">
                     <img
                       src="{% static 'images/login1.png' %}"
@@ -18,32 +22,55 @@
                       style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
                     />
                   </div>
-                  <div class="col-xl-5 col-lg-7 col-xs-5 border-0 m-lg-auto shadow">
-                    <div class="card-body p-md-5 text-black">
-                        <h1 class="display-5 text-center text-secondary"> Sajilo Sewa</h1>
-                      <h3 class="mb-5 text-center">Sign In</h3>
-                      <form  method="post" action="">
-                          {% csrf_token %}
-                        <div class="col-md-7 mb-4 col-xs-6 m-auto   ">
-                            <div class="form-outline mb-4">
-                                <input type="text" name="username" id="form2Example1"  class="form-control"/>
-                                <label class="form-label" for="form2Example1">Username</label>
+
+                  <div class="col-xl-4 col-lg-7 col-xs-5 border-0 m-lg-auto shadow">
+                            <div class="card-body p-md-5 text-black">
+                                <h1 class="display-5 text-center text-secondary"> Sajilo Sewa</h1>
+                              <form class="text-center border border-light " action="" method="post">
+                                  {% csrf_token %}
+
+                                    <p class="h4 mb-4">Sign in</p>
+
+                                    <!-- Username -->
+
+                                  <div class="col-xl-12 m-auto">
+                                     <div class="form-outline mb-4">
+                                          <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" >
+                                          <label class="form-label" for="form2Example1">Username</label>
+                                     </div>
+                                  </div>
+                                    <!-- Password -->
+                                   <div class="col-xl-12  m-auto">
+                                      <div class="form-outline mb-4">
+                                              <input type="text" name="password" id="defaultLoginFormEmail" class="form-control mb-4" >
+                                              <label class="form-label" for="form2Example1">Password</label>
+                                      </div>
+                                   </div>
+
+
+                                    <div class="d-flex justify-content-around">
+                                        <div>
+                                            <!-- Remember me -->
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <!-- Forgot password -->
+                                            <a href="{% url 'reset_password' %}">Forgot password?</a>
+                                        </div>
                             </div>
-                        </div>
 
-                        <div class=" col-md-7 mb-4 col-xs-6 m-auto ">
-                            <div class="form-outline mb-4">
-                                <input type="text" name="password" id="form2Example1" class="form-control"/>
-                                <label class="form-label" for="form2Example1">Password</label>
-                            </div>
-                        </div>
+                            <!-- Sign in button -->
+                            <button class="btn btn-primary btn-block my-4" type="submit">Sign in</button>
 
-                        <div class="col-md-6 mb-4 col-xs-6 m-auto  ">
-                            <button type="submit" class="btn btn-primary w-100 ">Log In</button>
-                          </div>
+                            <!-- Register -->
+                            <p>Not a member?
+                                <a href="{% url 'Signup' %}">Register</a>
+                            </p>
 
-
-                    </form>
+           </form>
                     </div>
 
                   </div>
