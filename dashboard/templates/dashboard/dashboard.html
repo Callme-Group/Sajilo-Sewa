@@ -6,72 +6,128 @@
 
 {% block content %}
 
-{% comment %} <header>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 banner-info">
-        <h1>स्वागत छ !</h1>
-        <p class="big-text">सजिलो सेवा</p>
-        <p class="big-text">सेवा हाम्रो साथ तपाईंको</p>
-        <a href="#about" class="btn btn-started">Get Started</a>
+
+<style>
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 50px;
+  width: 50px;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  background-color: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 70px;
+  color: #00008B;
+  
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 70px;
+  color: #00008B;
+  
+}
+</style>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-mdb-ride="carousel">
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-mdb-target="#carouselExampleCaptions"
+      data-mdb-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-mdb-target="#carouselExampleCaptions"
+      data-mdb-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-mdb-target="#carouselExampleCaptions"
+      data-mdb-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="{% static 'images/bg.jpg'%}"
+        class="d-block w-100" style: height="700"
+        alt="Wild Landscape"
+      />
+      <div class="carousel-caption d-none d-md-block">
+        <h1 class="text-primary">सजिलो सेवा</h1>
+        <h3 class="text-primary"><strong>सेवा हाम्रो साथ तपाईंको</strong></h3>
+        <a href="#about" class="btn btn-success btn-rounded">Get Started</a>
       </div>
-      <div class="col-sm-6 banner-image">
-        <img src="{% static 'images/homepage1.jpg' %}" class="img-responsive">
+    </div>
+    <div class="carousel-item">
+      <img
+        src="{% static 'images/background.jpg'%}"
+        class="d-block w-100" style: height="700"
+        alt="Camera"
+      />
+      <div class="carousel-caption d-none d-md-block">
+        <h1 class="text-primary">सजिलो सेवा</h1>
+        <h3 class="text-primary"><strong>सेवा हाम्रो साथ तपाईंको</strong></h3>
+        <a href="#about" class="btn btn-success btn-rounded">Get Started</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img
+        src="{% static 'images/bg3.jpg'%}"
+        class="d-block w-100" style: height="700";
+        alt="Exotic Fruits"
+      />
+      <div class="carousel-caption d-none d-md-block">
+        <h1 class="text-primary">सजिलो सेवा</h1>
+        <h3 class="text-primary"><strong>सेवा हाम्रो साथ तपाईंको</strong></h3>
+        <a href="#about" class="btn btn-success btn-rounded">Get Started</a>
       </div>
     </div>
   </div>
-</header> {% endcomment %}
-
-
-
-
-
-<section id="f1" class="position-relative p-0">
-    <img src="{% static 'images/homepage2.jpg' %}" class="bgg position-absolute w-100 h-100" alt="">
-    <img src="{% static 'images/bg.jpg' %}" class="bgg1 position-absolute w-100 h-100" alt="">
-    <img src="{% static 'images/plumbing.jpg' %}" class="bgg3 position-absolute w-100 h-100" alt="">
-    <div class="f1-container">
-      <h3><strong>सजिलो सेवा</strong></h3>
-      <h1>सेवा हाम्रो साथ तपाईंको</h1>
-      <a href="#about" class="btn-get-started">Get Started</a>
-    </div>
-</section>
-
-<!--<div class="container" data-aos="fade-up">-->
-<!--        <div class="row">-->
-<!--          <div class="col-md-12">-->
-<!--            <h3 class="section-title">About Us</h3>-->
-<!--            <div class="section-title-divider"></div>-->
-<!--            <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--</div>-->
-
-<div class="about-section">
-
-    <div class="inner-container">
-        <h1>About Us</h1>
-        <p class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit ducimus, enim inventore earum, eligendi nostrum pariatur necessitatibus eius dicta a voluptates sit deleniti autem error eos totam nisi neque voluptates sit deleniti autem error eos totam nisi neque.
-        </p>
-        <div class="skills">
-            <span>Web Design</span>
-            <span>Photoshop & Illustrator</span>
-            <span>Coding</span>
-        </div>
-    </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-mdb-target="#carouselExampleCaptions"
+    data-mdb-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-mdb-target="#carouselExampleCaptions"
+    data-mdb-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
+
+
+
+
+
 
 
 {% comment %} category section {% endcomment %}
 
 
-<section id="category-section" class="category-section">
+<section id="category-section" class="container-xxl py-5">
   <div class="container">
-
-      <div class="section-title">
-          <h2>Category</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+      <div class="text-center">
+        <h4 class="section-title bg-white text-center text-primary px-3">Categories</h4>
+        <p class="mb-5">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit erat elitr rebum at clita. Diam dolor diam ipsum sit erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit</p>
       </div>
 
       <div class="row justify-content-center">
@@ -90,7 +146,7 @@
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-success">Visit</a>
+                  <a href="#!" class="btn btn-success btn-rounded">Visit</a>
                 </div>
               </div>
           </div>
@@ -109,7 +165,7 @@
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
                   </p>
-                  <a href="#!" class="btn btn-success">Visit </a>
+                  <a href="#!" class="btn btn-success btn-rounded">Visit </a>
                 </div>
               </div>
           </div>
@@ -124,12 +180,12 @@
 
 
 
-<section id="services-section" class="services-section">
+<section id="services-section" class="container-xxl py-5">
     <div class="container">
 
-        <div class="section-title">
-            <h2>Services</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <div class="text-center">
+            <h4 class="section-title bg-white text-center text-primary px-3">Services</h4>
+            <h4 class="mb-5"> What Facilities We Provide</h4>
         </div>
 
         <div class="row justify-content-center">
@@ -148,7 +204,7 @@
                       Some quick example text to build on the card title and make up the bulk of the
                       card's content.
                     </p>
-                    <a href="#!" class="btn btn-success">View Details</a>
+                    <a href="#!" class="btn btn-success btn-rounded">View Details</a>
                   </div>
                 </div>
             </div>
@@ -167,7 +223,7 @@
                       Some quick example text to build on the card title and make up the bulk of the
                       card's content.
                     </p>
-                    <a href="#!" class="btn btn-success">Read </a>
+                    <a href="#!" class="btn btn-success btn-rounded">Read </a>
                   </div>
                 </div>
             </div>
@@ -186,7 +242,7 @@
                       Some quick example text to build on the card title and make up the bulk of the
                       card's content.
                     </p>
-                    <a href="#!" class="btn btn-success">Read More</a>
+                    <a href="#!" class="btn btn-success btn-rounded">Read More</a>
                   </div>
                 </div>
             </div>
@@ -197,73 +253,123 @@
 
 
 
+{% comment %} about section starts  {% endcomment %}
 
-<section id="contact" class="contact">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Contact</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-    </div>
-
-    <div class="row">
-
-      <div class="col-lg-5 d-flex align-items-stretch">
-        <div class="info">
-          <div class="address">
-            <i class="fas fa-map-marker-alt"></i>
-            <h4>Location:</h4>
-            <p>A108 Adam Street, New York, NY 535022</p>
-          </div>
-
-          <div class="email">
-            <i class="fas fa-envelope"></i>
-            <h4>Email:</h4>
-            <p>info@example.com</p>
-          </div>
-
-          <div class="phone">
-            <i class="fas fa-mobile"></i>
-            <h4>Call:</h4>
-            <p>+1 5589 55488 55s</p>
-          </div>
-
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+<section id="about-section" class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                <div class="position-relative h-100">
+                    <img class="img-fluid position-absolute w-100 h-100" src="{% static 'images/about.jpg' %}" alt="" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <h4 class="section-title bg-white text-start text-primary pe-3">About Us</h4>
+                <h4 class="mb-4">Welcome to SajiloSewa</h4>
+                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                <div class="row gy-2 gx-4 mb-4">
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
+                    </div>
+                </div>
+                <a class="btn btn-primary btn-rounded py-3 px-5 mt-2" href="">Read More</a>
+            </div>
         </div>
-
-      </div>
-
-      <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label for="name">Your Name</label>
-              <input type="text" name="name" class="form-control" id="name" required>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="name">Your Email</label>
-              <input type="email" class="form-control" name="email" id="email" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="name">Subject</label>
-            <input type="text" class="form-control" name="subject" id="subject" required>
-          </div>
-          <div class="form-group">
-            <label for="name">Message</label>
-            <textarea class="form-control" name="message" rows="10" required></textarea>
-          </div>
-          <div class="my-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
-          </div>
-          <div class="text-center"><button type="submit">Send Message</button></div>
-        </form>
-      </div>
-
     </div>
+<section/>
 
+{% comment %} about section ends  {% endcomment %}
+
+
+
+
+
+<section class="mb-4">
+  <div class="container border mb-2 mt-5 bg-light "> 
+    <div class="row justify-content-center flex-md-wrap d-flex ">
+      <div class=" col-md-7 col-lg-6  mt-5 p-3 Large shadow g-0 mb-2">
+       <h1 class="text-primary">Send Message</h1>
+       <form method="post" action="">
+        <div class="row ">
+          <div class="col">
+            <div class="form-outline mb-4">
+              <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" >
+              <label class="form-label" for="form2Example1">Username</label>
+         </div>
+          </div>
+          <div class="col">
+            <div class="form-outline mb-4">
+              <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" >
+              <label class="form-label" for="form2Example1">Username</label>
+          </div>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col">
+            <div class="form-outline mb-4">
+              <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" >
+              <label class="form-label" for="form2Example1">Username</label>
+         </div>
+          </div>
+          <div class="col">
+            <div class="form-outline mb-4">
+              <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" >
+              <label class="form-label" for="form2Example1">Username</label>
+         </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline">
+            <textarea class="form-control pb-4" id="textAreaExample" rows="8"></textarea>
+            <label class="form-label" for="textAreaExample">Message</label>
+          </div>
+      </div>
+      <div class="mt-2">
+        <button type="submit" class=" gradient-button gradient-button-1 ">Submit form</button>
+      </div>
+      </div>
+    </form>
+      <div class=" col-md-5 ms-md--4 ms-lg-4  col-lg-5 shadow  mb-3 mt-5  ">
+        <div class="row">
+          <div class="col-md-8 shadow pr-md-2 w-100  " style="background-image: linear-gradient(to right bottom, #0b0f10, #113634, #2c5f44, #6a8644, #c0a646);">
+            <h5 class="text-white">Contact Info</h5>
+            <div  class="mt-4">
+              <i class="fas fa-map-marker-check text-white " style="background: #00fbff;    padding:6px; border-radius: 50%;">
+              </i> <p class="d-inline ms-4 text-white">Softwarica College, kathmandu</p>
+            </div>
+            <div class="mt-4">
+              <i class="fas fa-envelope text-white " style="background: #00fbff;    padding:6px; border-radius: 50%;"></i>
+              <p class="d-inline ms-4 text-white">SajiloSewa@gmail.com</p>
+            </div>
+            <div  class="mt-4 mb-2" >
+              <i class="fas fa-phone-volume  text-white" style="background: #00fbff;    padding:6px; border-radius: 50%;"></i>
+              <p class="d-inline ms-4 text-white">021-456798</p>
+            </div>
+          </div>
+          <div class="col=md-12 mt-md-4 w-100 shadow ">
+            <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.316259514104!2d85.29111322173706!3d27.708955944404007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e0!3m2!1sen!2snp!4v1640803435732!5m2!1sen!2snp" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
