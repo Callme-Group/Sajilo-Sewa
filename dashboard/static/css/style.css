@@ -127,8 +127,8 @@ label{
   clip-path: polygon(0 0,100% 0%,100% 70%,45% 100%,0 70%);
 }
 .card .pic img{
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
   border-radius: 50%;
   border: 1px solid rgb(255, 255, 255);
   margin-top: -80px;
@@ -147,6 +147,15 @@ label{
 
 
 
-/* team section  */
+/* team section starts  */
 
 
+
+@media only screen and (max-width: 590px) {
+.container {
+display: flex;
+flex-wrap: wrap;
+}
+}
+
+/* team section ends  */
