@@ -262,6 +262,13 @@ body{
   flex-wrap: wrap;
 }
 
+.footer a{
+    text-decoration: none;
+}
+
+
+
+
 .footer .box-container .box{
   padding:1rem 0;
   flex:1 1 25rem;
@@ -273,7 +280,6 @@ body{
   width:4rem;
   line-height: 4rem;
   text-align: center;
-  text-decoration: none;
 }
 
 .footer .box-container .box h3{
@@ -301,8 +307,8 @@ body{
 }
 
 .footer .box-container .box .links a:hover{
-  text-decoration: underline;
-  color:var(--green);
+  text-decoration: none;
+  color: #71ac4a;
 }
 
 .footer .credit{
