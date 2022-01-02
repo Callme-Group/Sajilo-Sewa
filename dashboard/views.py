@@ -4,6 +4,8 @@ from .forms import RegisterUserFrom
 from django.contrib import messages
 from .models import Profile
 from django.contrib.auth.models import User, auth
+import requests
+from django.conf import settings
 
 
 # Create your views here.
@@ -37,8 +39,11 @@ def login(request):
 
         user = auth.authenticate(username=uname, password=passwd)
 
+
         if user is not None:
             if not user.is_staff:
+
+
                 auth.login(request, user)
                 # return redirect("/signup")
                 messages.success(request, "Welcome ...")
