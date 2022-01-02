@@ -2,113 +2,77 @@
 
 {% load static %}
 
-{% block css_files %} <link rel="stylesheet" href='{% static "css/style.css" %}'> {% endblock css_files %}
+{% block css_files %}
+<link rel="stylesheet" href='{% static "css/style.css" %}'> {% endblock css_files %}
 
 {% block content %}
 
 
-<style>
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  height: 50px;
-  width: 50px;
-  background-size: 100%, 100%;
-  border-radius: 50%;
-  background-color: none;
-}
+{% comment %} <style>
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    height: 50px;
+    width: 50px;
+    background-size: 100%, 100%;
+    border-radius: 50%;
+    background-color: none;
+  }
 
-.carousel-control-next-icon:after
-{
-  content: '>';
-  font-size: 70px;
-  color: #00008B;
-  
-}
+  .carousel-control-next-icon:after {
+    content: '>';
+    font-size: 70px;
+    color: #00008B;
 
-.carousel-control-prev-icon:after {
-  content: '<';
-  font-size: 70px;
-  color: #00008B;
-  
-}
-</style>
+  }
+
+  .carousel-control-prev-icon:after {
+    content: '<';
+    font-size: 70px;
+    color: #00008B;
+
+  }
+</style> {% endcomment %}
 
 <div id="carouselExampleCaptions" class="carousel slide" data-mdb-ride="carousel">
   <div class="carousel-indicators">
-    <button
-      type="button"
-      data-mdb-target="#carouselExampleCaptions"
-      data-mdb-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselExampleCaptions"
-      data-mdb-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselExampleCaptions"
-      data-mdb-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
+    <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="1"
+      aria-label="Slide 2"></button>
+    <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="2"
+      aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img
-        src="{% static 'images/bg.jpg'%}"
-        class="d-block w-100" style: height="700"
-        alt="Wild Landscape"
-      />
-      <div class="carousel-caption d-none d-md-block">
+      <img src="{% static 'images/bg.jpg'%}" class="d-block w-100" style: height="700" alt="Wild Landscape" />
+      <div class="carousel-caption d-none d-md-block h-75">
         <h1 class="text-primary">सजिलो सेवा</h1>
         <h3 class="text-primary"><strong>सेवा हाम्रो साथ तपाईंको</strong></h3>
         <a href="#about" class="btn btn-success btn-rounded">Get Started</a>
       </div>
     </div>
     <div class="carousel-item">
-      <img
-        src="{% static 'images/background.jpg'%}"
-        class="d-block w-100" style: height="700"
-        alt="Camera"
-      />
-      <div class="carousel-caption d-none d-md-block">
+      <img src="{% static 'images/background.jpg'%}" class="d-block w-100" style: height="700" alt="Camera" />
+      <div class="carousel-caption d-none d-md-block h-75">
         <h1 class="text-primary">सजिलो सेवा</h1>
         <h3 class="text-primary"><strong>सेवा हाम्रो साथ तपाईंको</strong></h3>
         <a href="#about" class="btn btn-success btn-rounded">Get Started</a>
       </div>
     </div>
     <div class="carousel-item">
-      <img
-        src="{% static 'images/bg3.jpg'%}"
-        class="d-block w-100" style: height="700";
-        alt="Exotic Fruits"
-      />
-      <div class="carousel-caption d-none d-md-block">
+      <img src="{% static 'images/bg3.jpg'%}" class="d-block w-100" style: height="700" ; alt="Exotic Fruits" />
+      <div class="carousel-caption d-none d-md-block h-75">
         <h1 class="text-primary">सजिलो सेवा</h1>
         <h3 class="text-primary"><strong>सेवा हाम्रो साथ तपाईंको</strong></h3>
         <a href="#about" class="btn btn-success btn-rounded">Get Started</a>
       </div>
     </div>
   </div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-mdb-target="#carouselExampleCaptions"
-    data-mdb-slide="prev"
-  >
+  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-mdb-target="#carouselExampleCaptions"
-    data-mdb-slide="next"
-  >
+  <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
@@ -124,252 +88,449 @@
 
 
 <section id="category-section" class="container-xxl py-5">
-  <div class="container">
-      <div class="text-center">
-        <h4 class="section-title bg-white text-center text-primary px-3">Categories</h4>
-        <p class="mb-5">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit erat elitr rebum at clita. Diam dolor diam ipsum sit erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit</p>
-      </div>
+  <div class=" container">
+    <div class="text-center">
+      <h4 class="section-title bg-white text-center text-primary px-3">Categories</h4>
+      <p class="mb-5">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit erat elitr rebum at clita. Diam dolor
+        diam ipsum sit erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat
+        ipsum et lorem et sit</p>
+    </div>
 
-      <div class="row justify-content-center">
-          <div class="col-md-4">
-              <div class="card shadow">
-                <div class="inner bg-image hover-overlay ripple" >
-                  <img
-                    src="{% static 'images/house1.jpg' %}" class="img-fluid"/>
-                  <a href="#!">
-                    <div class="mask"></div>
-                  </a>
-                </div>
-                <div class="card-body text-center">
-                  <h3 class="card-title">Rental Home</h3>
-                  <p class="c-paragraph inactive-color">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a href="#!" class="btn btn-success btn-rounded">Visit</a>
-                </div>
-              </div>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card shadow">
+          <div class="inner bg-image hover-overlay ripple">
+            <img src="{% static 'images/house1.jpg' %}" class="img-fluid" />
+            <a href="#!">
+              <div class="mask"></div>
+            </a>
           </div>
-          <div class="col-md-4">
-              <div class="card shadow">
-                <div class="inner bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                  <img
-                    src="{% static 'images/flat.jpg' %}" class="img-fluid"/>
-                  <a href="#!">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                  </a>
-                </div>
-                <div class="card-body text-center">
-                  <h3 class="card-title">Plumbing</h3>
-                  <p class="c-paragraph inactive-color">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a href="#!" class="btn btn-success btn-rounded">Visit </a>
-                </div>
-              </div>
+          <div class="card-body text-center">
+            <h3 class="card-title">Rental Home</h3>
+            <p class="c-paragraph inactive-color">
+              Some quick example text to build on the card title and make up the bulk of the
+              card's content.
+            </p>
+            <a href="#!" class="btn btn-success btn-rounded">Visit</a>
           </div>
+        </div>
       </div>
+      <div class="col-md-4">
+        <div class="card shadow">
+          <div class="inner bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <img src="{% static 'images/flat.jpg' %}" class="img-fluid" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+          <div class="card-body text-center">
+            <h3 class="card-title">Plumbing</h3>
+            <p class="c-paragraph inactive-color">
+              Some quick example text to build on the card title and make up the bulk of the
+              card's content.
+            </p>
+            <a href="#!" class="btn btn-success btn-rounded">Visit </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 
 
 
-{% comment %} service section {% endcomment %}
 
-
+{% comment %} service section starts {% endcomment %}
 
 <section id="services-section" class="container-xxl py-5">
-    <div class="container">
+  <div class=" container">
 
-        <div class="text-center">
-            <h4 class="section-title bg-white text-center text-primary px-3">Services</h4>
-            <h4 class="mb-5"> What Facilities We Provide</h4>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="card shadow">
-                  <div class="inner bg-image hover-overlay ripple" >
-                    <img
-                      src="{% static 'images/house1.jpg' %}" class="img-fluid"/>
-                    <a href="#!">
-                      <div class="mask"></div>
-                    </a>
-                  </div>
-                  <div class="card-body text-center">
-                    <h3 class="card-title">House</h3>
-                    <p class="c-paragraph inactive-color">
-                      Some quick example text to build on the card title and make up the bulk of the
-                      card's content.
-                    </p>
-                    <a href="#!" class="btn btn-success btn-rounded">View Details</a>
-                  </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow">
-                  <div class="inner bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img
-                      src="{% static 'images/flat.jpg' %}" class="img-fluid"/>
-                    <a href="#!">
-                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                    </a>
-                  </div>
-                  <div class="card-body text-center">
-                    <h3 class="card-title">Flat</h3>
-                    <p class="c-paragraph inactive-color">
-                      Some quick example text to build on the card title and make up the bulk of the
-                      card's content.
-                    </p>
-                    <a href="#!" class="btn btn-success btn-rounded">Read </a>
-                  </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow">
-                  <div class="inner bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img
-                      src="{% static 'images/plumbing.jpg' %}" class="img-fluid"/>
-                    <a href="#!">
-                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                    </a>
-                  </div>
-                  <div class="card-body text-center">
-                    <h3 class="card-title">Household Materials</h3>
-                    <p class="c-paragraph inactive-color">
-                      Some quick example text to build on the card title and make up the bulk of the
-                      card's content.
-                    </p>
-                    <a href="#!" class="btn btn-success btn-rounded">Read More</a>
-                  </div>
-                </div>
-            </div>
-        </div>
+    <div class="text-center">
+      <h4 class="section-title bg-white text-center text-primary px-3">Services</h4>
+      <h4 class="mb-5"> What Facilities We Provide</h4>
     </div>
+
+    <div class="row g-3 mb-5 mt-5 d-flex justify-content-center ms-5">
+      <div class="col-12 col-md-6 col-lg-4 align-content-md-center">
+        <div class="card border m-auto">
+          <div class="inner bg-image">
+            <img src="{% static 'images/house1.jpg' %}" class="card-img-top" alt="...">
+          </div>
+          <div class="pic">
+            <img src="{% static 'images/house1.jpg' %}" class="card-img-top" alt="...">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">House</h5>
+            <p class="card-text">Some quick example text to build on the card title.</p>
+            <a href="#!" class="btn btn-success btn-rounded">View Details</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 align-content-md-center">
+        <div class="card m-auto">
+          <div class="inner bg-image">
+            <img src="{% static 'images/flat.jpg' %}" class="card-img-top" alt="...">
+          </div>
+          <div class="pic">
+            <img src="{% static 'images/flat.jpg' %}" class="card-img-top" alt="...">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Flat</h5>
+            <p class="card-text">Some quick example text to build on the card title.</p>
+            <a href="#!" class="btn btn-success btn-rounded">View Details</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 align-content-md-center">
+        <div class="card m-auto">
+          <div class="inner bg-image">
+            <img src="{% static 'images/plumbing.jpg' %}" class="card-img-top" alt="...">
+          </div>
+          <div class="pic">
+            <img src="{% static 'images/plumbing.jpg' %}" class="card-img-top" alt="...">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Plumbing</h5>
+            <p class="card-text">Some quick example text to build on the card title.</p>
+            <a href="#!" class="btn btn-success btn-rounded">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> {% comment %} service section ends here {% endcomment %} 
+
+
+
+{% comment %} about section starts {% endcomment %}
+  <section id="about-section" class="container-xxl py-5">
+<div class=" container">
+  <div class="row g-5">
+    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+      <div class="position-relative h-100">
+        <img class="img-fluid position-absolute w-100 h-100" src="{% static 'images/about.jpg' %}" alt=""
+          style="object-fit: cover;">
+      </div>
+    </div>
+    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+      <h4 class="section-title bg-white text-start text-primary pe-3">About Us</h4>
+      <h4 class="mb-4">Welcome to SajiloSewa</h4>
+      <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita
+        erat ipsum et lorem et sit.</p>
+      <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita
+        erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+      <div class="row gy-2 gx-4 mb-4">
+        <div class="col-sm-6">
+          <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
+        </div>
+        <div class="col-sm-6">
+          <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
+        </div>
+        <div class="col-sm-6">
+          <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
+        </div>
+        <div class="col-sm-6">
+          <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
+        </div>
+        <div class="col-sm-6">
+          <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
+        </div>
+        <div class="col-sm-6">
+          <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
+        </div>
+      </div>
+      <a class="btn btn-primary btn-rounded py-3 px-5 mt-2" href="">Read More</a>
+    </div>
+  </div>
+</div>
+</section>
+
+{% comment %} about section ends {% endcomment %}
+
+
+
+{% comment %} team section started {% endcomment %}
+
+
+<section class="container-xxl py-5" id="team-section">
+  <div class=" container-fluid">
+
+    <div class="text-center">
+      <h4 class="section-title bg-white text-center text-primary px-3">Our Team</h4>
+      <h4 class="mb-5"> Our team Member who contributes to this project</h4>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="inam" class="carousel slide" data-mdb-ride="carousel>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container pd-sm-2">
+              <div class="row  mb-lg-5 mb-md-5  mb-sm-3 min-vh-80 mt-3 ">
+                <div class="col-sm-12 col-lg-4 mt-3 ">
+                  <div class="card m-auto">
+                    <div class="bg-image">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top"
+                        alt="...">
+                    </div>
+                    <div class="pic">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top"
+                        alt="...">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Our Teams</h5>
+                      <p class="card-text">Teams to successed SajiloSewa.</p>
+                      <ul class="list-unstyled list-inline text-center">
+                        <li class="list-inline-item">
+                          <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998;" href="#!"
+                            role="button"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee;" href="#!"
+                            role="button"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39;" href="#!"
+                            role="button"><i class="fab fa-instagram"></i></a>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 mt-3">
+                  <div class="card  m-auto">
+                    <div class="bg-image">
+                      <img src="{% static 'images/manish.png' %}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="pic">
+                      <img src="{% static 'images/manish.png' %}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Manish Silwal</h5>
+                      <p class="card-text">Frontend designer.</p>
+                      <ul class="list-unstyled list-inline text-center">
+                        <li class="list-inline-item">
+                          <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998;" href="#!"
+                            role="button"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee;" href="#!"
+                            role="button"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39;" href="#!"
+                            role="button"><i class="fab fa-instagram"></i></a>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 mt-3 ">
+                  <div class="card  m-auto">
+                    <div class="bg-image">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top"
+                        alt="...">
+                    </div>
+                    <div class="pic">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top"
+                        alt="...">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Nabin Bhattarai</h5>
+                      <p class="card-text">Backend handler.</p>
+                      <ul class="list-unstyled list-inline text-center">
+                        <li class="list-inline-item">
+                          <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998;" href="#!"
+                            role="button"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee;" href="#!"
+                            role="button"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39;" href="#!"
+                            role="button"><i class="fab fa-instagram"></i></a>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row  mb-lg-5 mb-md-5 mb-sm-3 mb-sm-3 min-vh-70 mt-3 ">
+                <div class="col-sm-12 col-lg-4 mt-3">
+                  <div class="card  m-auto">
+                    <div class="bg-image">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top"
+                        alt="...">
+                    </div>
+                    <div class="pic">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top"
+                        alt="...">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Aayush Taujale</h5>
+                      <p class="card-text">Frontend Designer.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 mt-3">
+                  <div class="card  m-auto">
+                    <div class="bg-image">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top"
+                        alt="...">
+                    </div>
+                    <div class="pic">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top"
+                        alt="...">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Shaswot Malla</h5>
+                      <p class="card-text">Documentation writer.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 mt-2 mt-3  ">
+                  <div class="card m-auto mb-sm-2 ">
+                    <div class="bg-image">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top"
+                        alt="...">
+                    </div>
+                    <div class="pic">
+                      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="card-img-top"
+                        alt="...">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Adarsha Khadka</h5>
+                      <p class="card-text">Backend handler.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- <a href="#inam" class="carousel-control-prev" data-mdb-slide="prev">
+          <span class="carousel-control-prev-icon text-danger">Previous</span>
+        </a>
+        <a href="#inam" class="carousel-control-next" data-mdb-slide="next">
+          <span class="carousel-control-next-icon text-danger">Next</span>
+        </a>  -->
+
+      </div>
+    </div>
+  </div>
 </section>
 
 
+{% comment %} team section ends {% endcomment %}
 
 
-{% comment %} about section starts  {% endcomment %}
 
-<section id="about-section" class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                <div class="position-relative h-100">
-                    <img class="img-fluid position-absolute w-100 h-100" src="{% static 'images/about.jpg' %}" alt="" style="object-fit: cover;">
-                </div>
-            </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                <h4 class="section-title bg-white text-start text-primary pe-3">About Us</h4>
-                <h4 class="mb-4">Welcome to SajiloSewa</h4>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                <div class="row gy-2 gx-4 mb-4">
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
-                    </div>
-                </div>
-                <a class="btn btn-primary btn-rounded py-3 px-5 mt-2" href="">Read More</a>
-            </div>
-        </div>
+
+
+
+
+
+
+
+
+
+{% comment %} contact form started {% endcomment %}
+
+<section class="container-xxl py-5" id="contact-section">
+  <div class=" container-fluid">
+    <div class="text-center">
+      <h4 class="section-title bg-white text-center text-primary px-3">Contact</h4>
+      <h4 class="mb-5"> Our team Member who contributes to this project</h4>
     </div>
-<section/>
-
-{% comment %} about section ends  {% endcomment %}
 
 
-
-
-
-<section class="mb-4">
-  <div class="container border mb-2 mt-5 bg-light "> 
     <div class="row justify-content-center flex-md-wrap d-flex ">
       <div class=" col-md-7 col-lg-6  mt-5 p-3 Large shadow g-0 mb-2">
-       <h1 class="text-primary">Send Message</h1>
-       <form method="post" action="">
-        <div class="row ">
-          <div class="col">
-            <div class="form-outline mb-4">
-              <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" >
-              <label class="form-label" for="form2Example1">Username</label>
-         </div>
+        <h1 class="text-primary">Send Message</h1>
+        <form method="post" action="">
+          <div class="row ">
+            <div class="col">
+              <div class="form-outline mb-4">
+                <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4">
+                <label class="form-label" for="form2Example1">Username</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline mb-4">
+                <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4">
+                <label class="form-label" for="form2Example1">Username</label>
+              </div>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col">
+              <div class="form-outline mb-4">
+                <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4">
+                <label class="form-label" for="form2Example1">Username</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline mb-4">
+                <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4">
+                <label class="form-label" for="form2Example1">Username</label>
+              </div>
+            </div>
           </div>
           <div class="col">
-            <div class="form-outline mb-4">
-              <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" >
-              <label class="form-label" for="form2Example1">Username</label>
+            <div class="form-outline">
+              <textarea class="form-control pb-4" id="textAreaExample" rows="8"></textarea>
+              <label class="form-label" for="textAreaExample">Message</label>
+            </div>
           </div>
-          </div>
-        </div>
-        <div class="row ">
-          <div class="col">
-            <div class="form-outline mb-4">
-              <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" >
-              <label class="form-label" for="form2Example1">Username</label>
-         </div>
-          </div>
-          <div class="col">
-            <div class="form-outline mb-4">
-              <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" >
-              <label class="form-label" for="form2Example1">Username</label>
-         </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-outline">
-            <textarea class="form-control pb-4" id="textAreaExample" rows="8"></textarea>
-            <label class="form-label" for="textAreaExample">Message</label>
+          <div class="mt-2">
+            <button type="submit" class=" gradient-button gradient-button-1 ">Submit form</button>
           </div>
       </div>
-      <div class="mt-2">
-        <button type="submit" class=" gradient-button gradient-button-1 ">Submit form</button>
-      </div>
-      </div>
-    </form>
+      </form>
       <div class=" col-md-5 ms-md--4 ms-lg-4  col-lg-5 shadow  mb-3 mt-5  ">
         <div class="row">
-          <div class="col-md-8 shadow pr-md-2 w-100  " style="background-image: linear-gradient(to right bottom, #0b0f10, #113634, #2c5f44, #6a8644, #c0a646);">
+          <div class="col-md-8 shadow pr-md-2 w-100  "
+            style="background-image: linear-gradient(to right bottom, #0b0f10, #113634, #2c5f44, #6a8644, #c0a646);">
             <h5 class="text-white">Contact Info</h5>
-            <div  class="mt-4">
-              <i class="fas fa-map-marker-check text-white " style="background: #00fbff;    padding:6px; border-radius: 50%;">
-              </i> <p class="d-inline ms-4 text-white">Softwarica College, kathmandu</p>
+            <div class="mt-4">
+              <i class="fas fa-map-marker-alt text-white "
+                style="background: #00fbff;    padding:6px 8px;  border-radius: 50%;"></i>
+              <p class="d-inline ms-4 text-white">Softwarica College, kathmandu</p>
             </div>
             <div class="mt-4">
-              <i class="fas fa-envelope text-white " style="background: #00fbff;    padding:6px; border-radius: 50%;"></i>
+              <i class="fas fa-envelope text-white "
+                style="background: #00fbff;    padding:6px; border-radius: 50%;"></i>
               <p class="d-inline ms-4 text-white">SajiloSewa@gmail.com</p>
             </div>
-            <div  class="mt-4 mb-2" >
-              <i class="fas fa-phone-volume  text-white" style="background: #00fbff;    padding:6px; border-radius: 50%;"></i>
+            <div class="mt-4 mb-2">
+              <i class="fas fa-phone-volume  text-white"
+                style="background: #00fbff;    padding:6px 8px; border-radius: 50%;"></i>
               <p class="d-inline ms-4 text-white">021-456798</p>
             </div>
           </div>
           <div class="col=md-12 mt-md-4 w-100 shadow ">
-            <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.316259514104!2d85.29111322173706!3d27.708955944404007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e0!3m2!1sen!2snp!4v1640803435732!5m2!1sen!2snp" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe class="w-100"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.316259514104!2d85.29111322173706!3d27.708955944404007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e0!3m2!1sen!2snp!4v1640803435732!5m2!1sen!2snp"
+              width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
-          </div>
-        </div>
         </div>
       </div>
     </div>
+  </div>
+  </div>
   </div>
 </section>
 
