@@ -151,11 +151,6 @@ label{
 
 
 
-@media only screen and (max-width: 590px) {
-.container {
-display: flex;
-flex-wrap: wrap;
-}
-}
+
 
 /* team section ends  */
