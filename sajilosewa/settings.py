@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrapform',
     'social_django',
-    'validateform'
-
+    'crud',
 
 ]
 

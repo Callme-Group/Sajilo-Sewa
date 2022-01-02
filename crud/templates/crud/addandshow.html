@@ -1,0 +1,11 @@
+
+{% extends 'crud/base.html'%}
+{% block content%}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <a href="{% url 'show' %}"> Add </a>
+</form>
+
+
+{% endblock content%}

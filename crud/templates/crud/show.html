@@ -1,0 +1,24 @@
+{% extends 'crud/base.html' %}
+{% block content %}
+<table>
+    <thead>
+        <td>id</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Password</td>
+        <td>Action</td>
+    </thead>
+    <tbody>
+        {% for st in stu%}
+        <tr>
+            <td>{{st.id}}</td>
+            <td>{{st.name}}</td>
+            <td>{{st.email}}</td>
+            <td>{{st.password}}</td>
+            <td><a href="{% url 'update' st.id%}">Edit</a></td>
+            <td><a href="{% url 'delete' st.id%}">Delete</a></td>
+        </tr>
+        {% endfor%}
+    </tbody>
+</table>
+{% endblock content %}
