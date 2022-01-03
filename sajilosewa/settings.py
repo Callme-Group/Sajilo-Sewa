@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrapform',
     'social_django',
     'captcha',
+    'homepage',
 
 
 
