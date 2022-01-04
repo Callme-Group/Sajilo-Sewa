@@ -34,3 +34,21 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
+class Worker(models.Model):
+    worker_name = models.CharField(max_length=100)
+    phone = models.IntegerField()
+    address = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.worker_name
+
+
+class Service(models.Model):
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    service_name = models.CharField(max_length=150)
+    title = models.CharField(max_length=150)
+    price = models.IntegerField()
+    service_details = models.CharField(max_length=200)
+    worker = models.ForeignKey(Worker,on_delete=models.CASCADE)
+    status = models.CharField(max_length=100)
