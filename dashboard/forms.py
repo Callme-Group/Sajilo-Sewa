@@ -3,8 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .models import User
 from django.core import validators
+from .models import Category
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
+
 
 class RegisterUserFrom(UserCreationForm):
     """Form for creating Users"""
@@ -16,8 +18,15 @@ class RegisterUserFrom(UserCreationForm):
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     # captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
-
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
+
+
+class CategoryForm(forms.ModelForm):
+
+    class Meta:
+        model = Category
+        fields = ['name','image','description']
+
 

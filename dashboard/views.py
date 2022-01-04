@@ -11,8 +11,12 @@ import json
 from django.conf import settings
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode
+from .forms import CategoryForm
+from .models import Category
 
 # Create your views here.
+
+
 def dashboard(request):
     return render(request, 'dashboard/dashboard.html')
 
@@ -84,3 +88,9 @@ def login(request):
 
     else:
         return render(request, 'dashboard/login.html')
+
+
+def category(request):
+    categ = Category.objects.all()
+    return render(request,'dashboard/demo.html',{'cat':categ})
+

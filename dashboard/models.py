@@ -8,8 +8,6 @@ from django.core.validators import *
 from django.db.models.signals import post_save
 
 
-
-
 class Profile(models.Model): #Model to create profile for users
     objects = None
     user = models.OneToOneField(User,null=True,on_delete=models.CASCADE)
@@ -26,3 +24,13 @@ class Profile(models.Model): #Model to create profile for users
         return self.firstname + " "+ self.lastname
 
 # Create your models here.
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='static/category/images')
+    description = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name
+
