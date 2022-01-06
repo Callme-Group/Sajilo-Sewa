@@ -7,6 +7,22 @@
 
 {% block content %}
 
+<!-- Messenger Chat plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "331097920684355");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+
+
 
 <div id="carouselExampleCaptions" class="carousel slide" data-mdb-ride="carousel">
     <div class="carousel-indicators">
@@ -589,10 +605,6 @@
     </div>
     </div>
 </section>
-
-
-
-
 
 
 

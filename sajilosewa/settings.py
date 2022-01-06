@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
