@@ -12,7 +12,7 @@ from django.conf import settings
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode
 from .forms import CategoryForm
-from .models import Category
+from .models import Category,Service,Worker
 
 # Create your views here.
 
@@ -92,5 +92,19 @@ def login(request):
 
 def category(request):
     categ = Category.objects.all()
+    ser_id = request.GET.get('service')
+    if ser_id:
+        service = Service.objects.filter(category=ser_id)
+        context={
+            'service':service
+        }
+        return render(request,'dashboard/rentalservices.html',context)
     return render(request,'dashboard/demo.html',{'cat':categ})
+
+
+
+
+
+
+
 

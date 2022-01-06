@@ -52,3 +52,4 @@ class Service(models.Model):
     service_details = models.CharField(max_length=200)
     worker = models.ForeignKey(Worker,on_delete=models.CASCADE)
     status = models.CharField(max_length=100)
+    service_img = models.ImageField(upload_to='static/category/images',blank=True,null=True)

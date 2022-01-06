@@ -8,27 +8,27 @@
 <section id="category-section" class="container-xxl py-5">
     <div class=" container">
         <div class="text-center">
-            <h4 class="section-title bg-white text-center text-primary px-3">Categories</h4>
-            <h4 class="mb-5">Categories</h4>
+            <h4 class="section-title bg-white text-center text-primary px-3">Services</h4>
+            <h4 class="mb-5">Services</h4>
         </div>
 
         <div class="row justify-content-center">
-            {% for c in cat %}
+            {% for ser in service %}
 
             <div class="col-md-6 col-lg-4 mt-2 mb-2 ">
                 <div class="card shadow m-auto">
                     <div class="inner bg-image hover-overlay ripple">
-                        <img src="{{c.image.url}}" class="img-fluid" />
-                        <a href="?service={{c.id}}">
+<!--                        <img src="{{c.image.url}}" class="img-fluid" />-->
+                        <a href="#!">
                             <div class="mask"></div>
                         </a>
                     </div>
                     <div class="card-body text-center">
-                        <h3 class="card-title">{{c.name}}</h3>
+                        <h3 class="card-title">{{ser.service_name}}</h3>
                         <p class="c-paragraph inactive-color">
-                            {{c.description}}
+                            {{ser.service_details}}
+                            {{ser.worker}}
                         </p>
-                        <a href="?service={{c.id}}" class="btn btn-success btn-rounded">Visit</a>
                     </div>
                 </div>
             </div>
