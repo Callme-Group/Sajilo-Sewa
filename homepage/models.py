@@ -12,7 +12,7 @@ class Profile(models.Model):  # Model to create profile for users
     phone = models.CharField(max_length=10)
     district = models.CharField(max_length=30, default="Kathmandu")
     city = models.CharField(max_length=30, default="Sundarijal")
-    profile_pic = models.FileField(null=True, blank=True, upload_to='static/images', default='static/images/nabin.png')
+    profile_pic = models.ImageField(null=True, blank=True, upload_to='static/images', default='static/images/nabin.png')
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
