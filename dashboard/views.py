@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from .forms import RegisterUserFrom
 from django.contrib import messages
 from .models import Profile
+
 from django.contrib.auth.models import User, auth
 import requests
 import json
