@@ -4,14 +4,15 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import RegisterUserFrom
 from django.contrib import messages
-from .models import Profile
-
+from homepage.models import Profile
+from .auth import unauthenticated_user
 from django.contrib.auth.models import User, auth
 import requests
 import json
 from django.conf import settings
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode
+
 
 # Create your views here.
 def dashboard(request):
@@ -37,6 +38,7 @@ def register(request):
     return render(request, 'dashboard/register.html', context)
 
 
+
 def login(request):
     if request.method == 'POST':
         uname = request.POST['username']
@@ -53,7 +55,7 @@ def login(request):
                     'response': recaptcha_response
                 }
                 data = urllib.parse.urlencode(values).encode()
-                req = urllib.request.Request(url,data=data)
+                req = urllib.request.Request(url, data=data)
                 response = urllib.request.urlopen(req)
                 result = json.loads(response.read().decode())
                 print(result)
@@ -62,7 +64,7 @@ def login(request):
                 if result['success']:
                     print('pass')
                     messages.success(request, "Welcome ...")
-                    return redirect("/signup")
+                    return redirect("/")
 
                 else:
                     print('fail')

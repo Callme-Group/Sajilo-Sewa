@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     'captcha',
     'homepage',
 
-
-
 ]
 
 SITE_ID = 1
@@ -126,6 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # Default primary key field type
@@ -148,11 +148,10 @@ AUTHENTICATION_BACKENDS = [
 SOCIAL_AUTH_FACEBOOK_KEY = '608453583813548',
 SOCIAL_AUTH_FACEBOOK_SECRET = '80726502cb981777abd28fea36c10a98',
 
-
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '979634066748-n5pl2uj5lhgl1avi78tdqst65sfiljjj.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
-#SMTP Configuration
+# SMTP Configuration
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -161,6 +160,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'khadka03adrsh@gmail.com'
 EMAIL_HOST_PASSWORD = 'Kdk@03adrsh'
 
-
-RECAPTCHA_PUBLIC_KEY ='6Lf1lukdAAAAAN4XwvVi84LdKC0Bxs8dYb4LFDHn'
-RECAPTCHA_PRIVATE_KEY ='6Lf1lukdAAAAAGX18xok6_FoO3-U_WaaGmL1bz3z'
+RECAPTCHA_PUBLIC_KEY = '6Lf1lukdAAAAAN4XwvVi84LdKC0Bxs8dYb4LFDHn'
+RECAPTCHA_PRIVATE_KEY = '6Lf1lukdAAAAAGX18xok6_FoO3-U_WaaGmL1bz3z'
