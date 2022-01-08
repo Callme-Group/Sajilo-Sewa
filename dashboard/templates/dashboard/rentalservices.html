@@ -18,7 +18,7 @@
             <div class="col-md-6 col-lg-4 mt-2 mb-2 ">
                 <div class="card shadow m-auto">
                     <div class="inner bg-image hover-overlay ripple">
-<!--                        <img src="{{c.image.url}}" class="img-fluid" />-->
+                        <img src="{{ser.service_img.url}}" class="img-fluid" />
                         <a href="#!">
                             <div class="mask"></div>
                         </a>
@@ -30,6 +30,7 @@
                             {{ser.worker}}
                         </p>
                     </div>
+                     <a href="{% url 'Service_details' ser.id  %}" class="btn btn-success btn-rounded">show details</a>
                 </div>
             </div>
             {%endfor%}

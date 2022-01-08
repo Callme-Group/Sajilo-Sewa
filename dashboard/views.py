@@ -12,7 +12,8 @@ from django.conf import settings
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode
 from .forms import CategoryForm
-from .models import Category,Service,Worker
+from .models import Category, Service, Worker
+
 
 # Create your views here.
 
@@ -56,7 +57,7 @@ def login(request):
                     'response': recaptcha_response
                 }
                 data = urllib.parse.urlencode(values).encode()
-                req = urllib.request.Request(url,data=data)
+                req = urllib.request.Request(url, data=data)
                 response = urllib.request.urlopen(req)
                 result = json.loads(response.read().decode())
                 print(result)
@@ -95,16 +96,15 @@ def category(request):
     ser_id = request.GET.get('service')
     if ser_id:
         service = Service.objects.filter(category=ser_id)
-        context={
-            'service':service
+        context = {
+            'service': service
         }
-        return render(request,'dashboard/rentalservices.html',context)
-    return render(request,'dashboard/demo.html',{'cat':categ})
+        return render(request, 'dashboard/rentalservices.html', context)
+    return render(request, 'dashboard/demo.html', {'cat': categ})
 
 
+def servicedetail(request,id):
 
+    each_service = Service.objects.get(id=id)
 
-
-
-
-
+    return render(request, 'dashboard/servicedetails.html', {'each_service': each_service})
