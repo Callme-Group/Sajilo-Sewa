@@ -33,6 +33,13 @@
                  <li class="nav-item">
                     <a class="nav-link" href="{% url 'category' %}">Catagories</a>
                 </li>
+                <li class="nav-item">
+                    <form method="get" action="/search">
+                        <input type="search" placeholder="Search" name="query" id="query">
+                        <button type="submit">Search</button>
+                    </form>
+
+                </li>
 
             </ul>
             <!-- Left links -->

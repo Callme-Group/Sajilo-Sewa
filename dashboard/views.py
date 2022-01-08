@@ -102,6 +102,23 @@ def category(request):
     return render(request,'dashboard/demo.html',{'cat':categ})
 
 
+def searchMatch(query,service):
+    if query in service.service_name or query in service.title:
+        return True
+    else:
+        return False
+
+
+
+def search(request):
+    service = Service.objects.all()
+    services_id = request.GET.get('query')
+    if services_id:
+        services = Service.objects.filter(searchMatch(services_id,service))
+        return render(request,'dashboard/search.html',{'service':services})
+    return render(request,'dashboard/search.html',{'services':service})
+
+
 
 
 
