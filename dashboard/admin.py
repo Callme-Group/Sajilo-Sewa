@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category,Worker,Service
+from .models import Category,Worker,Service,BlogComment
 # Register your models here.
 @admin.register(Category)
 
@@ -19,3 +19,5 @@ class WorkerAdmin(admin.ModelAdmin):
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ['id','service_name','title','price','service_details','status','category','worker']
 
+
+admin.site.register(BlogComment)

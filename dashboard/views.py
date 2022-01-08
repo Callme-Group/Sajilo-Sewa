@@ -12,7 +12,7 @@ from django.conf import settings
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode
 from .forms import CategoryForm
-from .models import Category, Service, Worker
+from .models import Category, Service, Worker,BlogComment
 
 
 # Create your views here.
@@ -106,7 +106,28 @@ def category(request):
 def servicedetail(request,id):
 
     each_service = Service.objects.get(id=id)
+    comments = BlogComment.objects.filter(service=each_service)
     each_service.count += 1
     each_service.save()
+    context={
+        'service': each_service,
+        'comments':comments,
 
-    return render(request, 'dashboard/servicedetails.html', {'each_service': each_service})
+
+    }
+
+    return render(request, 'dashboard/servicedetails.html',context)
+
+
+def postComment(request):
+    if request.method == "POST":
+        comment = request.POST.get('comment')
+        user = request.user
+        service_id = request.POST.get('serviceID')
+        service = Service.objects.get(id=service_id)
+        comment = BlogComment(comment_post=comment, user=user, service=service)
+        comment.save()
+        messages.success(request, "Your comment has been posted successfully")
+
+    return redirect(f"/service-deatils/{service.id}")
+    # return render(request, 'dashboard/servicedetails.html')

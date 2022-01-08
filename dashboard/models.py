@@ -58,7 +58,7 @@ class Service(models.Model):
     verified = models.BooleanField(default=False)
 
 
-class Comment(models.Model):
+class BlogComment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment_post = models.TextField()
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
