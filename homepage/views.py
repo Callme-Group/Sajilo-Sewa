@@ -14,7 +14,7 @@ def profile(request):
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-
+            print('save')
             return redirect('/homepage/profile')
     context = {
         'form': ProfileForm(instance=profile)
