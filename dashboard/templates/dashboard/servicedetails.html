@@ -17,7 +17,7 @@
                             <span><img src="https://icon2.cleanpng.com/20180410/fke/kisspng-largest-human-flag-of-nepal-national-flag-flag-5acd078e68af59.6878683915233862544288.jpg" alt="" style="width: 20px; height: 20px;"></span>
                             <span><img src="https://icon2.cleanpng.com/20180410/fke/kisspng-largest-human-flag-of-nepal-national-flag-flag-5acd078e68af59.6878683915233862544288.jpg" alt="" style="width: 20px; height: 20px;"></span>
                             <span><img src="https://icon2.cleanpng.com/20180410/fke/kisspng-largest-human-flag-of-nepal-national-flag-flag-5acd078e68af59.6878683915233862544288.jpg" alt="" style="width: 20px; height: 20px;"></span>
-                            <span class="ps-2"><i class="fas fa-user"></i> 370 views</span>
+                            <span class="ps-2"><i class="fas fa-user"></i> {{each_service.count}} views</span>
                             <span class="ps-2"><i class="fas fa-circle text-success"></i>{{each_service.status}}</span>
                         </div>
                         <div class="d-flex justify-content-between gap-4">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class=""><img class="w-100"
-                            src="https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                            src="{{each_service.service_img.url}}"
                             alt="" style="height:454px; object-fit: cover;"></div>
                 </div>
             </div>
@@ -35,8 +35,8 @@
                 <div class="d-flex position-sticky top-0 justify-content-between p-2 " style="background-color: #f8f9fa;">
                     <div class="d-flex flex-column w-100">
                         <div class="d-flex justify-content-between ">
-                        <p class="bg-danger border-0 text-white px-1  "> permonth</p>
-                        <button class="btn btn-primary d-flex    p-md-2 align-items-center text-nowrap">Book now</button></div>
+                        <p class="bg-danger border-0 text-white px-1  "> {{each_service.title}}</p>
+                        <button class="btn btn-primary d-flex    p-md-2 align-items-center text-nowrap h-75">Book now</button></div>
                         <h3 class=" fw-normal text-dark"><img src="https://www.vhv.rs/dpng/d/33-330883_indian-rupee-symbol-png-transparent-png.png" style="width: 20px; height: 20px;" alt=""> {{each_service.price}}</h3>
                         <div class="d-flex gap-2">
                             <div class=" bg-white text-center d-flex align-items-center justify-content-center " style="width: 35px; height: 35px; border-radius: 50%;"><i class="fas fa-heart "  ></i></div>
@@ -45,12 +45,16 @@
                     </div>
                 </div>
                 <div class="d-flex flex-column text-start gap-3  mt-2 ">
-                    <span class="d-flex gap-3  align-items-center"><i class="far fa-eye"></i> 370
-                        view</span>
+                    <span class="d-flex gap-3  align-items-center"><i class="far fa-eye"></i> {{each_service.count}}</span>
                     <span class="d-flex gap-3 align-items-center"><i class="fas fa-user"></i> Professionals</span>
                     <span class="d-flex gap-3 align-items-center"><i class="fas fa-smile-beam"></i> Punctual</span>
                     <span class="d-flex gap-3 align-items-center"><i class="fas fa-infinity"></i> Well Trained</span>
+                    {% if each_service.verified %}
                     <span class="d-flex gap-3 align-items-center"><i class="fas fa-check-circle text-success"></i> Verified</span>
+                    {% else %}
+                    <span class="d-flex gap-3 align-items-center"><i class="fas fa-times-circle text-danger"></i>Not Verified</span>
+
+                    {% endif %}
                     <hr>
                 </div>
             </div>
@@ -61,7 +65,7 @@
                             <h1 class="btn btn-dark bg-opacity-10 py-3 fw-bold mb-5">Description</h1>
                             <p class="text-start">{{each_service.service_details}}
                             </p>
-                            <div class="px-3 shadow-4-soft py-5 ">
+                            <!-- <div class="px-3 shadow-4-soft py-5 ">
                                 <h4>Highlights</h4>
                                 <div class=" row  gy-2  ">
                                         <span class="col-sm-6 col-md-5 "><i class="fas fa-check me-3 "></i>Booking Available for PCR Test in
@@ -75,7 +79,7 @@
                                         <span class=" col-sm-6 col-md-5"><i class="fas fa-check me-3"></i>Booking Available for PCR Test in
                                             kathmandu</span>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
     <section  class="m-2 mx-md-5 px-md-5 mt-5" style="background-color: white;">

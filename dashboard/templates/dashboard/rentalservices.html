@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block css_files %}
-<link rel="stylesheet" href='{% static "css/style.css" %}'> {% endblock css_files %}
+<link rel="stylesheet" href='{% static "css/style.css" %}'>
+
+{% endblock css_files %}
 {% block content%}
 
 <section id="category-section" class="container-xxl py-5">
@@ -12,25 +14,45 @@
             <h4 class="mb-5">Services</h4>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row ">
             {% for ser in service %}
 
             <div class="col-md-6 col-lg-4 mt-2 mb-2 ">
-                <div class="card shadow m-auto">
-                    <div class="inner bg-image hover-overlay ripple">
-                        <img src="{{ser.service_img.url}}" class="img-fluid" />
-                        <a href="#!">
-                            <div class="mask"></div>
-                        </a>
+                <div class=" text-start shadow p-2 bg-white">
+                    <div class=" inner hover-overlay ripple">
+                        <a href="{% url 'Service_details' ser.id  %}" class="zoom bg-primary"><img src="{{ser.service_img.url}}" class="img-fluid scale" style="aspect-ratio: 1/0.7; object-fit: cover;" /></a>
+                      
                     </div>
-                    <div class="card-body text-center">
-                        <h3 class="card-title">{{ser.service_name}}</h3>
-                        <p class="c-paragraph inactive-color">
-                            {{ser.service_details}}
-                            {{ser.worker}}
-                        </p>
+                    <div class="card-body ">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-title ">{{ser.service_name}}</h4>
+
+                            <a href="" class=" border border-dark border-2 text-black-50 fw-bolder h-50 px-3  "> Book Now</a>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <div class=" bg-white  text-center d-flex align-items-center justify-content-center " style="width: 35px; height: 35px; border-radius: 50%;"><i class="fas fa-heart "  ></i></div>
+                            <span class=" bg-white text-center d-flex align-items-center justify-content-center " style="width: 35px; height: 35px; border-radius: 50%;"><i class="fab fa-affiliatetheme"></i></span>
+                        </div>
+                        <div class=" mt-2">
+                            <p class=" text-white bg-danger  p-1 px-2  text-nowrap text-center" style="width: 120px;">{{ser.title}}</p>
+                            <p class=" fw-normal text-dark fs-3"><img src="https://w7.pngwing.com/pngs/920/165/png-transparent-indian-rupee-sign-currency-symbol-india-angle-company-text.png" style="width: 20px; height: 20px;" alt=""> {{ser.price}}</p>
+                           
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex gap-2">
+                            <span><img src="https://icon2.cleanpng.com/20180410/fke/kisspng-largest-human-flag-of-nepal-national-flag-flag-5acd078e68af59.6878683915233862544288.jpg" alt="" style="width: 23px; height: 20px; object-fit: contain;"></span>
+                            <span><img src="https://icon2.cleanpng.com/20180410/fke/kisspng-largest-human-flag-of-nepal-national-flag-flag-5acd078e68af59.6878683915233862544288.jpg" alt="" style="width: 23px; height: 20px; object-fit: contain;"></span>
+                            <span><img src="https://icon2.cleanpng.com/20180410/fke/kisspng-largest-human-flag-of-nepal-national-flag-flag-5acd078e68af59.6878683915233862544288.jpg" alt="" style="width: 23px; height: 20px; object-fit: contain;"></span>
+                            <span><img src="https://icon2.cleanpng.com/20180410/fke/kisspng-largest-human-flag-of-nepal-national-flag-flag-5acd078e68af59.6878683915233862544288.jpg" alt="" style="width: 23px; height: 20px; object-fit: contain;"></span>
+                            
+                        </div>
+                                 <span>{{ser.worker}}</span>
+                            </div>
+                           
+                        </div>
+                        
                     </div>
-                     <a href="{% url 'Service_details' ser.id  %}" class="btn btn-success btn-rounded">show details</a>
+                     <!-- <a href="{% url 'Service_details' ser.id  %}" class="btn btn-success btn-rounded">show details</a> -->
                 </div>
             </div>
             {%endfor%}

@@ -6,6 +6,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import *
 from django.db.models.signals import post_save
+from django.utils.timezone import now
 
 
 class Profile(models.Model): #Model to create profile for users
@@ -53,3 +54,13 @@ class Service(models.Model):
     worker = models.ForeignKey(Worker,on_delete=models.CASCADE)
     status = models.CharField(max_length=100)
     service_img = models.ImageField(upload_to='static/category/images',blank=True,null=True)
+    count = models.IntegerField(default=0)
+    verified = models.BooleanField(default=False)
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment_post = models.TextField()
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    top = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+    time = models.DateTimeField(default=now)

@@ -106,5 +106,7 @@ def category(request):
 def servicedetail(request,id):
 
     each_service = Service.objects.get(id=id)
+    each_service.count += 1
+    each_service.save()
 
     return render(request, 'dashboard/servicedetails.html', {'each_service': each_service})
