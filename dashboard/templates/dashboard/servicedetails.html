@@ -265,10 +265,25 @@
 
             <p></p>
             <div class="small ms-2 d-flex justify-content-start">
-              <a href="#!" class="d-flex align-items-center me-3">
-                <i class="far fa-thumbs-up me-2"></i>
-                <p class="mb-0">Like</p>
-              </a>
+<!--              <a href="#!" class="d-flex align-items-center me-3">-->
+<!--                <i class="far fa-thumbs-up me-2"></i>-->
+<!--                <p class="mb-0">Like</p>-->
+<!--              </a>-->
+                {% if request.user in comment.like.all %}
+        <form action="/{{comment.id}}/like" method="POST">
+            {% csrf_token %}
+            <button   class=" like-btn" type=" submit" data-new="{{comment.id}}" id="new"><i class="far fa-thumbs-up text-primary me-2"
+                 ></i> </button>
+            <span class="like-count me-2">{{comment.like.all.count}}</span>
+        </form>
+
+        {% else %}
+        <form action="/{{comment.id}}/like" method="POST">
+            {% csrf_token %}
+            <button   type=" submit" id="new" class=" like-btn " data-new="{{comment.id}}"><i class="far fa-thumbs-up"
+                  ></i></button>
+        </form>
+        {% endif %}
 
               <a
                 class="d-flex align-items-center me-3"

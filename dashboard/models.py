@@ -64,6 +64,7 @@ class BlogComment(models.Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     top = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
     time = models.DateTimeField(default=now)
+    like = models.ManyToManyField(User, related_name='likes', blank=True)
 
     def __str__(self):
         return self.comment_post[0:10] + "..." + "by" + " " + self.user.username

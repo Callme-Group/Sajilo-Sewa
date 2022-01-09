@@ -1,6 +1,6 @@
 import urllib
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from .forms import RegisterUserFrom
 from django.contrib import messages
@@ -149,3 +149,26 @@ def postComment(request):
     return redirect(f"/service-deatils/{service.id}")
 
     # return render(request, 'dashboard/servicedetails.html')
+
+def toggleLike(request,service_id):
+    # an ajax call is made using this function
+    post = BlogComment.objects.get(id = service_id)
+    like_count = post.like.count()
+    is_like = False
+    if request.method =='POST':
+        for like in post.like.all():
+
+            if like == request.user:
+                is_like =True
+                like_count = post.like.count()
+
+                break
+        if not is_like:
+            post.like.add(request.user)
+            like_count = post.like.count()
+
+        if is_like:
+            post.like.remove(request.user)
+            like_count = post.like.count()
+
+    return JsonResponse({"is_like":is_like, "likes_count":like_count})
