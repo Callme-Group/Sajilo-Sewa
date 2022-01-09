@@ -12,8 +12,8 @@ from django.conf import settings
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode
 from .forms import CategoryForm
-from .models import Category, Service, Worker,BlogComment
-
+from .models import Category, Service, Worker, BlogComment
+from dashboard.templatetags import extras
 
 # Create your views here.
 
@@ -103,20 +103,28 @@ def category(request):
     return render(request, 'dashboard/demo.html', {'cat': categ})
 
 
-def servicedetail(request,id):
-
+def servicedetail(request, id):
     each_service = Service.objects.get(id=id)
-    comments = BlogComment.objects.filter(service=each_service)
+    comments = BlogComment.objects.filter(service=each_service,top=None).order_by('-id')
+    replies = BlogComment.objects.filter(service=each_service).exclude(top=None)
+    replyDict={}
+    for reply in replies:
+        if reply.top.id not in replyDict.keys():
+            replyDict[reply.top.id]=[reply]
+        else:
+            replyDict[reply.top.id].append(reply)
+
+    print(replyDict)
     each_service.count += 1
     each_service.save()
-    context={
+    context = {
         'service': each_service,
-        'comments':comments,
-
+        'comments': comments,
+        'replyDict':replyDict
 
     }
 
-    return render(request, 'dashboard/servicedetails.html',context)
+    return render(request, 'dashboard/servicedetails.html', context)
 
 
 def postComment(request):
@@ -125,9 +133,19 @@ def postComment(request):
         user = request.user
         service_id = request.POST.get('serviceID')
         service = Service.objects.get(id=service_id)
-        comment = BlogComment(comment_post=comment, user=user, service=service)
-        comment.save()
-        messages.success(request, "Your comment has been posted successfully")
+        parentSno = request.POST.get('parentSno')
+        if parentSno == "":
+            comment = BlogComment(comment_post=comment, user=user, service=service)
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, "Your comment has been posted successfully")
+        else:
+            parent = BlogComment.objects.get(id=parentSno)
+            comment = BlogComment(comment_post=comment, user=user, top=parent,service=service)
+
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, "Your reply has been posted successfully")
+
 
     return redirect(f"/service-deatils/{service.id}")
+
     # return render(request, 'dashboard/servicedetails.html')
