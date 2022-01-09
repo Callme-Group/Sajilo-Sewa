@@ -2,16 +2,21 @@ var newer = document.getElementById('new')
 
     var fa_heart = document.querySelectorAll('.like-btn')
     var like_count = document.querySelectorAll('.like-count')
-    //  on click a dropdown menu is shown
+    //  unique id is set for all the like
     for (var i = 0; i < like_count.length; i++) {
            like_count[i].id = `like-count${i}`
+           console.log(like_count[i])
 
     }
     // for each like button a ajax call is made
     fa_heart.forEach((item, index, arr) => {
+        
         arr[index].addEventListener('click', (e) => {
             let target = e.target
+            item.classList.toggle('is_blue')
             e.preventDefault();
+
+            
 
             var postId = arr[index].getAttribute('data-new')
             $.ajax({
@@ -27,6 +32,7 @@ var newer = document.getElementById('new')
                 success: function (data) {
                     if (data.is_like) {
                         var liked = document.getElementById(`like-count${index}`)
+                        
                         liked.innerHTML = data.like_count
                     } else {
                         var liked = document.getElementById(`like-count${index}`)

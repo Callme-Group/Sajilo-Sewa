@@ -1,5 +1,10 @@
 {% extends 'layout.html'%} {% load static %} {% load extras %} {% block content%}
 
+<style>
+  .is_blue{
+    color: blue !important;
+  }
+</style>
 <div class="m-2 mx-md-5 px-md-5">
   <div class="row">
     <div class="col-lg-8">
@@ -272,18 +277,20 @@
                 {% if request.user in comment.like.all %}
         <form action="/{{comment.id}}/like" method="POST">
             {% csrf_token %}
-            <button   class=" like-btn" type=" submit" data-new="{{comment.id}}" id="new"><i class="far fa-thumbs-up text-primary me-2"
+            <button   class=" like-btn border-0" type=" submit" data-new="{{comment.id}}" id="new"><i class="fas fa-thumbs-up  is_blue  fs-6 me-2"
                  ></i> </button>
-            <span class="like-count me-2">{{comment.like.all.count}}</span>
+            
         </form>
 
         {% else %}
         <form action="/{{comment.id}}/like" method="POST">
             {% csrf_token %}
-            <button   type=" submit" id="new" class=" like-btn " data-new="{{comment.id}}"><i class="far fa-thumbs-up"
+            <button   type=" submit" id="new" class=" like-btn border-0 " data-new="{{comment.id}}"><i class="fas fa-thumbs-up fs-6 me-2 "
                   ></i></button>
+            
         </form>
         {% endif %}
+        <span class="like-count me-2 ">{{comment.like.all.count}}</span>
 
               <a
                 class="d-flex align-items-center me-3"
@@ -356,7 +363,7 @@
                                 <div class="d-flex align-items-center">
                                     <img class="rounded-circle shadow-1-strong me-3"
                                         src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
-                                        alt="avatar" width="40" height="40" />
+                                        alt="avatar" width="30" height="30" />
                                     <div>
                                         <h6 class="fw-bold text-primary mb-1">Lily Coleman</h6>
                                         <p class="text-muted small mb-0">

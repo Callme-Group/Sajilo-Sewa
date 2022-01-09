@@ -171,4 +171,4 @@ def toggleLike(request,service_id):
             post.like.remove(request.user)
             like_count = post.like.count()
 
-    return JsonResponse({"is_like":is_like, "likes_count":like_count})
+    return JsonResponse({"is_like":is_like, "like_count":like_count})
