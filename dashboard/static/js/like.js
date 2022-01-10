@@ -1,4 +1,4 @@
-var newer = document.getElementById('new')
+
 
     var fa_heart = document.querySelectorAll('.like-btn')
     var like_count = document.querySelectorAll('.like-count')
@@ -13,7 +13,7 @@ var newer = document.getElementById('new')
         
         arr[index].addEventListener('click', (e) => {
             let target = e.target
-            item.classList.toggle('is_blue')
+            item.classList.toggle('text-primary')
             e.preventDefault();
 
             

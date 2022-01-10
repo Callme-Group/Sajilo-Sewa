@@ -1,10 +1,6 @@
 {% extends 'layout.html'%} {% load static %} {% load extras %} {% block content%}
 
-<style>
-  .is_blue{
-    color: blue !important;
-  }
-</style>
+
 <div class="m-2 mx-md-5 px-md-5">
   <div class="row">
     <div class="col-lg-8">
@@ -277,7 +273,7 @@
                 {% if request.user in comment.like.all %}
         <form action="/{{comment.id}}/like" method="POST">
             {% csrf_token %}
-            <button   class=" like-btn border-0" type=" submit" data-new="{{comment.id}}" id="new"><i class="fas fa-thumbs-up  is_blue  fs-6 me-2"
+            <button   class=" like-btn border-0 bg-transparent" type=" submit" data-new="{{comment.id}}" id="new"><i class="fas fa-thumbs-up  text-primary  fs-6 me-2"
                  ></i> </button>
             
         </form>
@@ -285,7 +281,7 @@
         {% else %}
         <form action="/{{comment.id}}/like" method="POST">
             {% csrf_token %}
-            <button   type=" submit" id="new" class=" like-btn border-0 " data-new="{{comment.id}}"><i class="fas fa-thumbs-up fs-6 me-2 "
+            <button   type=" submit" id="new" class=" like-btn border-0 bg-transparent " data-new="{{comment.id}}"><i class="fas fa-thumbs-up fs-6 me-2 "
                   ></i></button>
             
         </form>
@@ -394,7 +390,7 @@
                                                 {% if request.user in reply.like.all %}
         <form action="/{{reply.id}}/like" method="POST">
             {% csrf_token %}
-            <button   class=" like-btn border-0" type=" submit" data-new="{{reply.id}}" id="new"><i class="fas fa-thumbs-up  is_blue  fs-6 me-2"
+            <button   class=" like-btn border-0 bg-transparent" type=" submit" data-new="{{reply.id}}" id="new"><i class="fas fa-thumbs-up  text-primary  fs-6 me-2"
                  ></i> </button>
 
         </form>
@@ -402,7 +398,7 @@
         {% else %}
         <form action="/{{reply.id}}/like" method="POST">
             {% csrf_token %}
-            <button   type=" submit" id="new" class=" like-btn border-0 " data-new="{{reply.id}}"><i class="fas fa-thumbs-up fs-6 me-2 "
+            <button   type=" submit" id="new" class=" like-btn border-0 bg-transparent " data-new="{{reply.id}}"><i class="fas fa-thumbs-up fs-6 me-2 "
                   ></i></button>
 
         </form>
