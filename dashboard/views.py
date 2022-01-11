@@ -12,8 +12,9 @@ from django.conf import settings
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode
 from .forms import CategoryForm
-from .models import Category, Service, Worker, BlogComment
+from .models import Category, Service, Worker, BlogComment, Order
 from dashboard.templatetags import extras
+
 
 # Create your views here.
 
@@ -105,12 +106,12 @@ def category(request):
 
 def servicedetail(request, id):
     each_service = Service.objects.get(id=id)
-    comments = BlogComment.objects.filter(service=each_service,top=None).order_by('-id')
+    comments = BlogComment.objects.filter(service=each_service, top=None).order_by('-id')
     replies = BlogComment.objects.filter(service=each_service).exclude(top=None)
-    replyDict={}
+    replyDict = {}
     for reply in replies:
         if reply.top.id not in replyDict.keys():
-            replyDict[reply.top.id]=[reply]
+            replyDict[reply.top.id] = [reply]
         else:
             replyDict[reply.top.id].append(reply)
 
@@ -120,7 +121,7 @@ def servicedetail(request, id):
     context = {
         'service': each_service,
         'comments': comments,
-        'replyDict':replyDict
+        'replyDict': replyDict
 
     }
 
@@ -140,26 +141,26 @@ def postComment(request):
             messages.add_message(request, messages.SUCCESS, "Your comment has been posted successfully")
         else:
             parent = BlogComment.objects.get(id=parentSno)
-            comment = BlogComment(comment_post=comment, user=user, top=parent,service=service)
+            comment = BlogComment(comment_post=comment, user=user, top=parent, service=service)
 
             comment.save()
             messages.add_message(request, messages.SUCCESS, "Your reply has been posted successfully")
-
 
     return redirect(f"/service-deatils/{service.id}")
 
     # return render(request, 'dashboard/servicedetails.html')
 
-def toggleLike(request,service_id):
+
+def toggleLike(request, service_id):
     # an ajax call is made using this function
-    post = BlogComment.objects.get(id = service_id)
+    post = BlogComment.objects.get(id=service_id)
     like_count = post.like.count()
     is_like = False
-    if request.method =='POST':
+    if request.method == 'POST':
         for like in post.like.all():
 
             if like == request.user:
-                is_like =True
+                is_like = True
                 like_count = post.like.count()
 
                 break
@@ -171,4 +172,22 @@ def toggleLike(request,service_id):
             post.like.remove(request.user)
             like_count = post.like.count()
 
-    return JsonResponse({"is_like":is_like, "like_count":like_count})
+    return JsonResponse({"is_like": is_like, "like_count": like_count})
+
+
+def cart(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order={'get_cart_total':0,'get_cart_items':0}
+    context = {'items': items, 'order': order}
+
+    return render(request, 'dashboard/cart.html', context)
+
+
+def checkout(request):
+    context = {}
+    return render(request, 'dashboard/checkout.html', context)

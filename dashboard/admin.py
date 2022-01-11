@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category,Worker,Service,BlogComment
+from .models import Category,Worker,Service,BlogComment,Order,OrderItem,ShippingAddress
 # Register your models here.
 @admin.register(Category)
 
@@ -21,3 +21,6 @@ class ServiceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(BlogComment)
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(ShippingAddress)

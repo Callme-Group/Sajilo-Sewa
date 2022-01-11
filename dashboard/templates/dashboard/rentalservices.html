@@ -27,7 +27,7 @@
                         <div class="d-flex justify-content-between">
                             <h4 class="card-title ">{{ser.service_name}}</h4>
 
-                            <a href="" class=" border border-dark border-2 text-black-50 fw-bolder h-50 px-3  "> Book Now</a>
+                            <a href="" class=" update-cart border border-dark border-2 text-black-50 fw-bolder h-50 px-3  " data-product="{{ser.id}}" data-action="add"> Book Now</a>
                         </div>
 
                         <div class="d-flex gap-2">
@@ -60,4 +60,5 @@
         </div>
     </div>
 </section>
+<script src='{% static "js/cart.js" %}'></script>
 {% endblock content%}
