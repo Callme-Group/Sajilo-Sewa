@@ -2,6 +2,9 @@
 {% load static %}
 
 {% block title %}Login{% endblock %}
+{% block js %}
+<script src='{% static "js/cart.js" %}'></script>
+{% endblock js %}
 
 {% block content %}
 
@@ -11,7 +14,7 @@
       <div class="col-md-8">
         <div class="card mb-4">
           <div class="card-header py-3">
-            <h5 class="mb-0">Cart - 2 items</h5>
+            <h5 class="mb-0"></h5>
           </div>
           <div class="card-body">
             <!-- Single item -->
@@ -48,7 +51,7 @@
               <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <!-- Quantity -->
                 <div class="d-flex mb-4" style="max-width: 300px">
-                  <button class="btn btn-primary px-3 me-2"
+                  <button class=" update-cart btn btn-primary px-3 me-2" data-product="{{item.service.id}}" data-action="remove"
                     onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                     <i class="fas fa-minus"></i>
                   </button>
@@ -58,7 +61,7 @@
                     <label class="form-label" for="form1">Quantity</label>
                   </div>
 
-                  <button class="btn btn-primary px-3 ms-2"
+                 <button class=" update-cart btn btn-primary px-3 ms-2" data-product="{{item.service.id}}" data-action="add"
                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                     <i class="fas fa-plus"></i>
                   </button>

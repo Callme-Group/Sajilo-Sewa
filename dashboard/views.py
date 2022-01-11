@@ -12,7 +12,7 @@ from django.conf import settings
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode
 from .forms import CategoryForm
-from .models import Category, Service, Worker, BlogComment, Order
+from .models import Category, Service, Worker, BlogComment, Order, OrderItem, ShippingAddress
 from dashboard.templatetags import extras
 
 
@@ -95,6 +95,8 @@ def login(request):
 def category(request):
     categ = Category.objects.all()
     ser_id = request.GET.get('service')
+
+
     if ser_id:
         service = Service.objects.filter(category=ser_id)
         context = {
@@ -108,6 +110,7 @@ def servicedetail(request, id):
     each_service = Service.objects.get(id=id)
     comments = BlogComment.objects.filter(service=each_service, top=None).order_by('-id')
     replies = BlogComment.objects.filter(service=each_service).exclude(top=None)
+
     replyDict = {}
     for reply in replies:
         if reply.top.id not in replyDict.keys():
@@ -180,9 +183,10 @@ def cart(request):
         customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
+
     else:
         items = []
-        order={'get_cart_total':0,'get_cart_items':0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
     context = {'items': items, 'order': order}
 
     return render(request, 'dashboard/cart.html', context)
@@ -191,3 +195,49 @@ def cart(request):
 def checkout(request):
     context = {}
     return render(request, 'dashboard/checkout.html', context)
+
+
+#
+# def updateItem(request):
+#     data = json.loads(request.body)
+#     productId = data['productId']
+#     action = data['action']
+#     print('action:', action)
+#     print('productid:', productId)
+#     customer = request.user
+#     service = Service.objects.get(id=productId)
+#     order, created = Order.objects.get_or_create(customer=customer, complete=False)
+#     orderItem, create = OrderItem.objects.get_or_create(order=order, service=service)
+#     if action == 'add':
+#         orderItem.quantity = (OrderItem.quantity + 1)
+#     elif action == 'remove':
+#         orderItem.quantity = (OrderItem.quantity - 1)
+#     orderItem.save()
+#     if orderItem.quantity <= 0:
+#         OrderItem.delete()
+#     return JsonResponse('Item was added', safe=False)
+
+def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+    print('Action:', action)
+    print('Product:', productId)
+
+    customer = request.user
+    product = Service.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+    orderItem, created = OrderItem.objects.get_or_create(order=order, service=product)
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Item was added', safe=False)

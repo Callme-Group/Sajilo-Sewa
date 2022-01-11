@@ -41,8 +41,10 @@
 
 {% include 'footer.html' %}
 
-{% block js %} {% endblock js %}
-<script src='{% static "js/index.js" %}'></script>
+{% block js %}
+
+{% endblock js %}
+
 
  {% load crispy_forms_tags %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -54,8 +56,26 @@
 
 <script src='{% static "js/like.js" %}'></script>
 
-<script type="text/javascript">
+
+
+<script type="text/javascript" >
     var user ='{{request.user}}'
+    function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
 
 </script>
 
