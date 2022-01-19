@@ -56,6 +56,7 @@ class Service(models.Model):
     service_img = models.ImageField(upload_to='static/category/images', blank=True, null=True)
     count = models.IntegerField(default=0)
     verified = models.BooleanField(default=False)
+    digital = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
         return self.service_name
@@ -86,9 +87,18 @@ class Order(models.Model):
 
     @property
     def get_cart_total(self):
-        orderitems=self.orderitem_set.all()
-        total=sum([item.get_total for item in orderitems])
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total for item in orderitems])
         return total
+
+    @property
+    def shipping(self):
+        shipping = False
+        orderitems = self.orderitems_set.all()
+        for i in orderitems:
+            if i.service.digital == False:
+                shipping = True
+        return shipping
 
     @property
     def get_cart_items(self):
@@ -106,7 +116,7 @@ class OrderItem(models.Model):
 
     @property
     def get_total(self):
-        total = self.service.price* self.quantity
+        total = self.service.price * self.quantity
         return total
 
 

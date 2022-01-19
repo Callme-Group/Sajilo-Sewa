@@ -14,7 +14,7 @@ from urllib.parse import urlencode
 from .forms import CategoryForm
 from .models import Category, Service, Worker, BlogComment, Order, OrderItem, ShippingAddress
 from dashboard.templatetags import extras
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -95,15 +95,22 @@ def login(request):
 def category(request):
     categ = Category.objects.all()
     ser_id = request.GET.get('service')
-
+    customer = request.user
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    cartItems = order.get_cart_items
 
     if ser_id:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        cartItems = order.get_cart_items
         service = Service.objects.filter(category=ser_id)
         context = {
-            'service': service
+            'service': service,
+            'cartItems':cartItems
+
         }
         return render(request, 'dashboard/rentalservices.html', context)
-    return render(request, 'dashboard/demo.html', {'cat': categ})
+    return render(request, 'dashboard/demo.html', {'cat': categ,'cartItems':cartItems})
 
 
 def servicedetail(request, id):
@@ -183,17 +190,27 @@ def cart(request):
         customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
 
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
-    context = {'items': items, 'order': order}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+        cartItems=order['get_cart_items']
+    context = {'items': items, 'order': order,'cartItems':cartItems}
 
     return render(request, 'dashboard/cart.html', context)
 
 
 def checkout(request):
-    context = {}
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0,'shipping':False}
+    context = {'items': items, 'order': order, 'cartItems': cartItems, 'shipping': False}
     return render(request, 'dashboard/checkout.html', context)
 
 

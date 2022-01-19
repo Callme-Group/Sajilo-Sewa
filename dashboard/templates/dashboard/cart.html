@@ -37,7 +37,7 @@
                 <p><strong>{{item.service.service_name}}</strong></p>
                 <p>{{item.service.verified}}</p>
                 <p>{{item.service.worker.worker_name}}</p>
-                <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+                <button type="button" class="update-cart btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" data-product="{{item.service.id}}" data-action="remove"
                   title="Remove item">
                   <i class="fas fa-trash"></i>
                 </button>
@@ -52,7 +52,7 @@
                 <!-- Quantity -->
                 <div class="d-flex mb-4" style="max-width: 300px">
                   <button class=" update-cart btn btn-primary px-3 me-2" data-product="{{item.service.id}}" data-action="remove"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+
                     <i class="fas fa-minus"></i>
                   </button>
 
@@ -62,7 +62,7 @@
                   </div>
 
                  <button class=" update-cart btn btn-primary px-3 ms-2" data-product="{{item.service.id}}" data-action="add"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+
                     <i class="fas fa-plus"></i>
                   </button>
                 </div>
@@ -121,9 +121,9 @@
               </li>
             </ul>
 
-            <button type="button" class="btn btn-primary btn-lg btn-block">
+            <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'checkout' %}">
               Go to checkout
-            </button>
+            </a>
           </div>
         </div>
       </div>
