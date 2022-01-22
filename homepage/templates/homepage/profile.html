@@ -72,8 +72,8 @@ img{
               aria-controls="ex2-tabs-2" aria-selected="false">Services</a>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link fw-bolder fs-6" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab"
-              aria-controls="ex2-tabs-3" aria-selected="false">link</a>
+            <a  class="nav-link fw-bolder fs-6"  href="{% url 'changepass' %}" role="tab"
+              aria-controls="ex2-tabs-3" aria-selected="false">Change Password</a>
           </li>
         </ul>
         <!-- Tabs navs -->
@@ -105,9 +105,33 @@ img{
               </div>
             </div>
           </div>
+<!--          start-->
+
           <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
-            Tab 3 content
+                 <h1 class="text-center mt-3">Change Password</h1>
+            <div class="col-md-6 m-auto">
+          <form>
+  <!-- Name input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="form5Example1" class="form-control" />
+    <label class="form-label" for="form5Example1"> New Password</label>
+  </div>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email" id="form5Example2" class="form-control" />
+    <label class="form-label" for="form5Example2">Confirm Password</label>
+  </div>
+
+
+  <!-- Submit button -->
+<!--  <button type="submit" class="btn btn-primary btn-block mb-4">change password</button>-->
+            <a type="submit" href="/"> Change Password</a>
+</form>
+              </div>
           </div>
+<!--          end content-->
+
         </div>
         <!-- Tabs content -->
       </div>
