@@ -32,82 +32,95 @@
                                                 class="fab fa-cc-amex fa-2x me-2"></i></a>
                                         <a href="#!" type="submit" class="text-white"><i
                                                 class="fab fa-cc-paypal fa-2x"></i></a>
-                                        <form class="mt-4">
-                                            <div class="row mb-4">
-                                                <div class="col-md-6">
-                                                    <div class="form-outline form-white">
-                                                        <input type="text" id="typeExp"
-                                                            class="form-control form-control-lg" placeholder="First Name"
-                                                            size="7" id="exp" minlength="7" maxlength="7" />
-                                                        <label class="form-label" for="typeExp">First Name</label>
+<!--                                        shipping-info -->
+
+                                        <div class="box-element" id="form-wrapper">
+                                            <form class="mt-4" id="form">
+                                                <div class="row mb-4"  id="user-info" >
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-outline form-white">
+                                                            <input type="text" id="typeExp"
+                                                                class="form-control form-control-lg" placeholder="First Name"
+                                                                size="7" id="exp" minlength="7" maxlength="7" />
+                                                            <label class="form-label" for="typeExp">First Name</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-outline form-white">
+                                                            <input type="password" id="typeText"
+                                                                class="form-control form-control-lg"
+                                                                placeholder="Last Name" size="1" minlength="3"
+                                                                maxlength="3" />
+                                                            <label class="form-label" for="typeText">Last Name</label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-outline form-white">
-                                                        <input type="password" id="typeText"
-                                                            class="form-control form-control-lg"
-                                                            placeholder="Last Name" size="1" minlength="3"
-                                                            maxlength="3" />
-                                                        <label class="form-label" for="typeText">Last Name</label>
+                                                <div  id="shipping-info">
+                                                    <div class="row mb-4">
+                                                        <div class="col-md-6">
+                                                            <div class="form-outline form-white">
+                                                                <input type="text" id="typeExp"
+                                                                    class="form-control form-control-lg" name="address" placeholder="Phone Number"
+                                                                    size="7" id="exp" minlength="7" maxlength="7" />
+                                                                <label class="form-label" for="typeExp">Address</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-outline form-white">
+                                                                <input type="text" name="city" id="typeText"
+                                                                    class="form-control form-control-lg"
+                                                                    placeholder="Address" size="1" minlength="3"
+                                                                    maxlength="3" />
+                                                                <label class="form-label" for="typeText">City</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-outline form-white mb-4">
+                                                        <input type="text" name="state" id="typeText" class="form-control form-control-lg"
+                                                            siez="17" placeholder="1234 5678 9012 3457" minlength="19"
+                                                            maxlength="19" />
+                                                        <label class="form-label" for="typeText">state</label>
+                                                    </div>
+                                                    <div class="row mb-4">
+                                                        <div class="col-md-6">
+                                                            <div class="form-outline form-white">
+                                                                <input type="text" name="zipcode" id="typeExp"
+                                                                    class="form-control form-control-lg" placeholder="MM/YYYY"
+                                                                    size="7" id="exp" minlength="7" maxlength="7" />
+                                                                <label class="form-label" for="typeExp">zip Code</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-outline form-white">
+                                                                <input type="text" name="country" id="typeText"
+                                                                    class="form-control form-control-lg"
+                                                                    placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3"
+                                                                    maxlength="3" />
+                                                                <label class="form-label" for="typeText">Country</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
+
+                                            <hr class="my-4">
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <p class="mb-2">Total(Incl. taxes)</p>
+                                                <p class="mb-2">{{order.get_cart_total}}</p>
                                             </div>
-                                            <div class="row mb-4">
-                                                <div class="col-md-6">
-                                                    <div class="form-outline form-white">
-                                                        <input type="number" id="typeExp"
-                                                            class="form-control form-control-lg" placeholder="Phone Number"
-                                                            size="7" id="exp" minlength="7" maxlength="7" />
-                                                        <label class="form-label" for="typeExp">Phone Number</label>
-                                                    </div>
+                                            <button type="submit"  id="form-button" class="btn btn-info btn-block btn-lg">
+                                                <div class="d-flex justify-content-between">
+                                                    <span>{{order.get_cart_total}}</span>
+                                                    <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-outline form-white">
-                                                        <input type="password" id="typeText"
-                                                            class="form-control form-control-lg"
-                                                            placeholder="Address" size="1" minlength="3"
-                                                            maxlength="3" />
-                                                        <label class="form-label" for="typeText">Address</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-outline form-white mb-4">
-                                                <input type="text" id="typeText" class="form-control form-control-lg"
-                                                    siez="17" placeholder="1234 5678 9012 3457" minlength="19"
-                                                    maxlength="19" />
-                                                <label class="form-label" for="typeText">Card Number</label>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <div class="col-md-6">
-                                                    <div class="form-outline form-white">
-                                                        <input type="text" id="typeExp"
-                                                            class="form-control form-control-lg" placeholder="MM/YYYY"
-                                                            size="7" id="exp" minlength="7" maxlength="7" />
-                                                        <label class="form-label" for="typeExp">Expiration</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-outline form-white">
-                                                        <input type="password" id="typeText"
-                                                            class="form-control form-control-lg"
-                                                            placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3"
-                                                            maxlength="3" />
-                                                        <label class="form-label" for="typeText">Cvv</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <hr class="my-4">
-                                        <div class="d-flex justify-content-between mb-4">
-                                            <p class="mb-2">Total(Incl. taxes)</p>
-                                            <p class="mb-2">{{order.get_cart_total}}</p>
+                                            </button>
+                                                </form>
                                         </div>
-                                        <button type="button" class="btn btn-info btn-block btn-lg">
-                                            <div class="d-flex justify-content-between">
-                                                <span>{{order.get_cart_total}}</span>
-                                                <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                                            </div>
-                                        </button>
+                                        <div class="box-element d-none hidden"  id="payment-info">
+                                                <small>Paypal Options</small>
+                                                <button id="make-payment">Make payment</button>
+                                                <div id="paypal-button-container"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +154,7 @@
                                                     <h5 class="fw-normal mb-0">{{item.quantity}}</h5>
                                                 </div>
                                                 <div style="width: 80px;">
-                                                    <h5 class="mb-0">{{item.service.price}}</h5>
+                                                    <h5 class="mb-0">{{item.get_total}}</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -159,6 +172,95 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+   var shipping = '{{order.shipping}}'
+   var total= '{{order.get_cart_total}}'
+   var user= '{{request.user}}'
+
+		if (shipping == 'False'){
+		 	document.getElementById('shipping-info').innerHTML = ''
+		}
+		if (user != 'AnonymousUser'){
+		 		document.getElementById('user-info').innerHTML = ''
+		 }
+
+		if (shipping == 'False' && user != 'AnonymousUser'){
+			//Hide entire form if user is logged in and shipping is false
+				document.getElementById('form-wrapper').classList.add("hidden");
+				//Show payment if logged in user wants to buy an item that does not require shipping
+			    document.getElementById('payment-info').classList.remove("hidden");
+		}
+
+
+
+
+
+		var form = document.getElementById('form')
+		form.addEventListener('submit', function(e){
+	    	e.preventDefault()
+	    	console.log('Form Submitted...')
+	    	document.getElementById('form-button').classList.add("d-none");
+	    	document.getElementById('payment-info').classList.remove("d-none");
+	    })
+	     document.getElementById('make-payment').addEventListener('click', function(e){
+	    	submitFormData()
+	    })
+	    function submitFormData(){
+	    console.log("click payemnt")
+	    	var userFormData = {
+				'name':null,
+				'email':null,
+				'total':total,
+			}
+
+			var shippingInfo = {
+				'address':null,
+				'city':null,
+				'state':null,
+				'zipcode':null,
+			}
+			if (shipping != 'False'){
+	    		shippingInfo.address = form.address.value
+		    	shippingInfo.city = form.city.value
+		    	shippingInfo.state = form.state.value
+		    	shippingInfo.zipcode = form.zipcode.value
+	    	}
+
+	    	if (user == 'AnonymousUser'){
+	    		userFormData.name = form.name.value
+	    		userFormData.email = form.email.value
+	    	}
+
+	    	console.log('Shipping Info:', shippingInfo)
+	    	console.log('User Info:', userFormData)
+
+
+	    	var url = "/process_order/"
+	    	fetch(url, {
+	    		method:'POST',
+	    		headers:{
+	    			'Content-Type':'applicaiton/json',
+	    			'X-CSRFToken':csrftoken,
+	    		},
+	    		body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}),
+
+	    	})
+	    	.then((response) => response.json())
+	    	.then((data) => {
+				console.log('Success:', data);
+				alert('Transaction completed');
+
+				cart = {}
+				document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+				window.location.href = "{% url 'category' %}"
+
+				})
+
+	    }
+
+
+</script>
 
 {% endblock %}
 

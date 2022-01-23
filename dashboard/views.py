@@ -98,7 +98,6 @@ def category(request):
     customer = request.user
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
     cartItems = order.get_cart_items
-
     if ser_id:
         customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
@@ -258,3 +257,7 @@ def updateItem(request):
         orderItem.delete()
 
     return JsonResponse('Item was added', safe=False)
+def processOrder(request):
+    print('Data:',request.body)
+    return JsonResponse("process order", safe=False)
+
