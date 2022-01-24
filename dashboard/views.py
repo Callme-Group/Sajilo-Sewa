@@ -15,7 +15,8 @@ from .forms import CategoryForm
 from .models import Category, Service, Worker, BlogComment, Order, OrderItem, ShippingAddress
 from dashboard.templatetags import extras
 from django.contrib.auth.decorators import login_required
-
+from  django.core.paginator import Paginator
+import datetime
 # Create your views here.
 
 
@@ -98,17 +99,32 @@ def category(request):
     customer = request.user
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
     cartItems = order.get_cart_items
+    cat_id=request.GET.get('categories')
+
     if ser_id:
+
         customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         cartItems = order.get_cart_items
         service = Service.objects.filter(category=ser_id)
+        all_serviecs = Service.objects.filter(category=ser_id)
+        if request.method == "POST":
+            minPrice = request.POST.get("minPrice")
+            maxPrice = request.POST.get("maxPrice")
+            service = all_serviecs.filter(price__gte=minPrice, price__lte=maxPrice)
+
+        paginator = Paginator(service, 3)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
         context = {
-            'service': service,
-            'cartItems':cartItems
+            'service': page_obj,
+            'cartItems': cartItems,
+            'category': categ,
 
         }
+
         return render(request, 'dashboard/rentalservices.html', context)
+
     return render(request, 'dashboard/demo.html', {'cat': categ,'cartItems':cartItems})
 
 
@@ -258,6 +274,30 @@ def updateItem(request):
 
     return JsonResponse('Item was added', safe=False)
 def processOrder(request):
-    print('Data:',request.body)
-    return JsonResponse("process order", safe=False)
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(request.body)
 
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    else:
+        customer, order = guestOrder(request, data)
+
+    total = float(data['form']['total'])
+    order.transaction_id = transaction_id
+
+    if total == order.get_cart_total:
+        order.complete = True
+    order.save()
+
+    if order.shipping == True:
+        ShippingAddress.objects.create(
+            customer=customer,
+            order=order,
+            address=data['shipping']['address'],
+            city=data['shipping']['city'],
+            state=data['shipping']['state'],
+            zipcode=data['shipping']['zipcode'],
+        )
+
+    return JsonResponse('Payment submitted..', safe=False)
