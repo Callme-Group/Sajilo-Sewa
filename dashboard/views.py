@@ -113,7 +113,7 @@ def category(request):
             maxPrice = request.POST.get("maxPrice")
             service = all_serviecs.filter(price__gte=minPrice, price__lte=maxPrice)
 
-        paginator = Paginator(service, 3)
+        paginator = Paginator(all_serviecs, 3)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         context = {

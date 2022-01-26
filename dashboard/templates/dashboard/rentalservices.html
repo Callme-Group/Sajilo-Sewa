@@ -167,14 +167,14 @@
   <ul class="pagination">
       {% if service.has_previous %}
     <li class="page-item ">
-      <a class="page-link" href="?service={{service.previous_page_number}}">Previous</a>
+      <a class="page-link" href="?page={{service.previous_page_number}}">Previous</a>
     </li>
       {% endif %}
     <li class="page-item"><a class="page-link" >{{service.number}}</a></li>
 
        {% if service.has_next %}
     <li class="page-item">
-      <a class="page-link" href="?service={{service.next_page_number}}">Next</a>
+      <a class="page-link" href="?page={{service.next_page_number}}">Next</a>
     </li>
         {% endif %}
   </ul>
