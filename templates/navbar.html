@@ -1,4 +1,54 @@
 <!-- Navbar -->
+
+ <style>
+        .notification {
+            background-color: #0d6efd;
+            color: white;
+            text-decoration: none;
+            padding: 4px 24px;
+            margin-right: 20px;
+            margin-left: 20px;
+            position: relative;
+            display: inline-block;
+            border-radius: 2px;
+            font-size: 20px;
+        }
+
+        .notification:hover {
+            background: #0b5ed7;
+            color: #fff;
+        }
+
+        .notification .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            padding: 8px 8px;
+            border-radius: 50%;
+            background: red;
+            color: white;
+        }
+
+        .notification-section .dropdown-toggle::after {
+            content: none;
+        }
+
+        .dropdown-toggle::after {
+            color: #fff;
+        }
+
+        #notifications-dropdown li {
+            max-width: 500px;
+            word-wrap: break-word;
+            display: inline-block;
+            white-space: normal;
+        }
+
+        #notifications-dropdown.dropdown-menu {
+            width: 15rem;
+        }
+
+    </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top">
     <!-- Container wrapper -->
     <div class="container">
@@ -39,7 +89,35 @@
                     <a class="nav-link" href="{% url 'cart' %}">cartItems:{{cartItems}}</a>
                 </li>
 
+                  <li class="nav-item dropdown notification-section">
+                    <a href="#" class="notification dropdown-toggle" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="true">
+                        <span><i class='fa fa-bell'></i></span>
+                        <span class="badge" id="notification-badge">0</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="notifications-dropdown"
+                        data-popper-placement="bottom-end"
+                        style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(-70px, 42px, 0px);">
+
+
+                        <li class="dropdown-item"></li>
+                        <hr class="dropdown-divider">
+
+                         <li class='dropdown-item'></li>
+                        <hr class="dropdown-divider">
+
+                    </ul>
+                </li>
+
+                 {% for i in notifications %}
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">notification:{{i.message}}</a>
+                </li>
+                        {% endfor %}
+
             </ul>
+
             <!-- Left links -->
 
             <div class="d-flex align-items-center">
@@ -60,6 +138,35 @@
         </div>
         <!-- Collapsible wrapper -->
     </div>
+    {{ room_name|json_script:"room-name" }}
+    <script>
+        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+
+        const notificationSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/notification/'
+            + roomName
+            + '/'
+        );
+
+        notificationSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            //document.querySelector('#chat-log').value += (data.message + '\n');
+            console.log(data);
+            document.getElementById("notifications-dropdown").innerHTML = "<li class='dropdown-item'>" + data + "</li><hr class='dropdown-divider'>" + document.getElementById("notifications-dropdown").innerHTML;
+            document.getElementById("notification-badge").innerHTML = parseInt(document.getElementById("notification-badge").innerHTML) + 1;
+        };
+
+        notificationSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+
+
+
+    </script>
+
     <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->

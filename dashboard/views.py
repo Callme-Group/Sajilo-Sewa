@@ -15,13 +15,36 @@ from .forms import CategoryForm
 from .models import Category, Service, Worker, BlogComment, Order, OrderItem, ShippingAddress
 from dashboard.templatetags import extras
 from django.contrib.auth.decorators import login_required
-from  django.core.paginator import Paginator
+from django.core.paginator import Paginator
 import datetime
+from channels.layers import get_channel_layer
 # Create your views here.
 
 
+from asgiref.sync import async_to_sync
+from .tasks import test_fun
+
+def celeryt(request):
+    test_fun.delay()
+    return HttpResponse("done")
+
+
+def test(request):
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        "notification_broadcast",
+        {
+            'type': 'send_notification',
+            'message': json.dumps("Notification")
+        }
+    )
+    return HttpResponse("Done")
+
+
 def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
+    return render(request, 'dashboard/dashboard.html', {
+        'room_name': "broadcast"
+    })
 
 
 def register(request):
@@ -99,7 +122,7 @@ def category(request):
     customer = request.user
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
     cartItems = order.get_cart_items
-    cat_id=request.GET.get('categories')
+    cat_id = request.GET.get('categories')
 
     if ser_id:
 
@@ -125,7 +148,7 @@ def category(request):
 
         return render(request, 'dashboard/rentalservices.html', context)
 
-    return render(request, 'dashboard/demo.html', {'cat': categ,'cartItems':cartItems})
+    return render(request, 'dashboard/demo.html', {'cat': categ, 'cartItems': cartItems})
 
 
 def servicedetail(request, id):
@@ -210,8 +233,8 @@ def cart(request):
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
-        cartItems=order['get_cart_items']
-    context = {'items': items, 'order': order,'cartItems':cartItems}
+        cartItems = order['get_cart_items']
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
 
     return render(request, 'dashboard/cart.html', context)
 
@@ -224,7 +247,7 @@ def checkout(request):
         cartItems = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0,'shipping':False}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
     context = {'items': items, 'order': order, 'cartItems': cartItems, 'shipping': False}
     return render(request, 'dashboard/checkout.html', context)
 
@@ -273,6 +296,8 @@ def updateItem(request):
         orderItem.delete()
 
     return JsonResponse('Item was added', safe=False)
+
+
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)

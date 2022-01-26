@@ -24,8 +24,6 @@ SECRET_KEY = 'django-insecure-b&+d+ugn+ko!)=2t!c2!2=#4a%1kv&kf_vci0k9r*r2&v9ox5k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,11 +35,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dashboard',
+    'notification_app',
     'crispy_forms',
     'bootstrapform',
     'social_django',
     'captcha',
-
+    'channels',
+    'django_celery_results',
+    'django_celery_beat',
 
 
 ]
@@ -73,12 +74,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'dashboard.custom_context_processors.notifications',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'sajilosewa.wsgi.application'
+ASGI_APPLICATION = 'sajilosewa.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -126,7 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
 
@@ -160,11 +163,10 @@ AUTHENTICATION_BACKENDS = [
 SOCIAL_AUTH_FACEBOOK_KEY = '608453583813548',
 SOCIAL_AUTH_FACEBOOK_SECRET = '80726502cb981777abd28fea36c10a98',
 
-
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '979634066748-n5pl2uj5lhgl1avi78tdqst65sfiljjj.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
-#SMTP Configuration
+# SMTP Configuration
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -173,6 +175,20 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'khadka03adrsh@gmail.com'
 EMAIL_HOST_PASSWORD = 'Kdk@03adrsh'
 
+RECAPTCHA_PUBLIC_KEY = '6Lf1lukdAAAAAN4XwvVi84LdKC0Bxs8dYb4LFDHn'
+RECAPTCHA_PRIVATE_KEY = '6Lf1lukdAAAAAGX18xok6_FoO3-U_WaaGmL1bz3z'
 
-RECAPTCHA_PUBLIC_KEY ='6Lf1lukdAAAAAN4XwvVi84LdKC0Bxs8dYb4LFDHn'
-RECAPTCHA_PRIVATE_KEY ='6Lf1lukdAAAAAGX18xok6_FoO3-U_WaaGmL1bz3z'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SELERLIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Kathmandu'
+
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
