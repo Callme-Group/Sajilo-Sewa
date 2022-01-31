@@ -91,31 +91,32 @@
 
                   <li class="nav-item dropdown notification-section">
                     <a href="#" class="notification dropdown-toggle" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="true">
+                        data-mdb-toggle="dropdown" aria-expanded="false">
                         <span><i class='fa fa-bell'></i></span>
-                        <span class="badge" id="notification-badge">0</span>
+                        <span class="badge" id="notification-badge">{{notifications.all.count}}</span>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="notifications-dropdown"
+                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown" id="notifications-dropdown"
                         data-popper-placement="bottom-end"
                         style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(-70px, 42px, 0px);">
 
 
-                        <li class="dropdown-item"></li>
-                        <hr class="dropdown-divider">
 
-                         <li class='dropdown-item'></li>
-                        <hr class="dropdown-divider">
+                     <div class="d-flex flex-column">
+
+                          {% for i in notifications %}
+
+                  <li class="">
+                    <a class="dropdown-item" href="#">{{i.message}}</a>
+                 </li>
+                        {% endfor %}
+                         </div>
+
 
                     </ul>
                 </li>
 
 
-                 {% for i in notifications %}
 
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">notification:{{i.message}}</a>
-                </li>
-                        {% endfor %}
 
             </ul>
 
