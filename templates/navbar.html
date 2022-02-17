@@ -1,11 +1,10 @@
-<!-- Navbar -->
+{% load static %}
 
- <style>
+<style>
         .notification {
-            background-color: #0d6efd;
-            color: white;
+
             text-decoration: none;
-            padding: 4px 24px;
+
             margin-right: 20px;
             margin-left: 20px;
             position: relative;
@@ -22,11 +21,21 @@
         .notification .badge {
             position: absolute;
             top: -10px;
-            right: -10px;
-            padding: 8px 8px;
-            border-radius: 50%;
+            left:9px;
+
+            width:20px;
+            height:20px;
             background: red;
             color: white;
+            border-radius:50px;
+            display:flex;
+            justify-content:center;
+            align-items-center:center;
+            vertical-align:center;
+
+            padding-top:6px;
+            font-size:10px;
+
         }
 
         .notification-section .dropdown-toggle::after {
@@ -48,100 +57,121 @@
             width: 15rem;
         }
 
-    </style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top">
+
+
+
+</style>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light " style="">
     <!-- Container wrapper -->
-    <div class="container">
+    <div class="container-fluid mb-2">
         <!-- Navbar brand -->
-        <a class="navbar-brand me-2 text-danger fs-3 fw-bold" href="/">
-            <i class="fa fa-phone-square" aria-hidden="true"></i>
-            SajiloSewa
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'images/logo3-removebg-preview12.png' %}" height="50" alt="" loading="lazy"
+                 style="color: aliceblue;"/>
         </a>
 
         <!-- Toggle button -->
-
-
-        <button
-                class="navbar-toggler"
-                type="button"
-                data-mdb-toggle="collapse"
-                data-mdb-target="#navbarButtonsExample"
-                aria-controls="navbarButtonsExample"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
 
         <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <div class="collapse navbar-collapse text-black" id="navbarSupportedContent" style="">
             <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold mt-1">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Homepage</a>
+            <ul class="navbar-nav me-auto  mb-lg-0">
+                <li class="nav-item ms-2">
+
+                    <a class=" n nav-link mr-2 " href="/"></i>Home</a>
+                </li>
+                <li class=" nav-item ms-2 ">
+                    <a class="n nav-link   " href="{% url 'category' %}">Category</a>
+                </li>
+                <li class="nav-item ms-2">
+                  <a class="nav-link" href="{% url 'cart' %}">cartItems:{{cartItems}}</a>
+                </li>
+                <li class="nav-item ms-2">
+                    <a class=" n nav-link  " href="#">Contact Us</a>
+                </li>
+                <li class="nav-item ms-2">
+                    <a class=" n nav-link   " href="#">My List</a>
+                </li>
+            </ul>
+            <!-- Left links -->
+            {% if user.is_authenticated %}
+            <!-- Search form -->
+            <form class=" input-group w-auto  float-left  " style="margin-right:10px;">
+                <input type="search" class="form-control" placeholder="Type query" aria-label="Search"/>
+                <button class="btn btn-outline-primary" type="button" data-mdb-ripple-color="dark"
+                        style="padding: .45rem 1.5rem .35rem;">
+                    Search
+                </button>
+            </form>
+            <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-lg-center">
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
                 </li>
 
-                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'category' %}">Catagories</a>
-                </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'cart' %}">cartItems:{{cartItems}}</a>
-                </li>
-
-                  <li class="nav-item dropdown notification-section">
-                    <a href="#" class="notification dropdown-toggle" id="navbarDropdown" role="button"
-                        data-mdb-toggle="dropdown" aria-expanded="false">
-                        <span><i class='fa fa-bell'></i></span>
+                <!-- Navbar dropdown -->
+                <li class="nav-item dropdown m-0 me-lg-1 ">
+                     <a href="#" class="notification dropdown-toggle d-flex align-items-center  ms-0 ms-lg-3" id="navbarDropdown" role="button"
+                       data-mdb-toggle="dropdown" aria-expanded="false">
+                        <span><i class='fa fa-bell text-black-50'></i></span>
                         <span class="badge" id="notification-badge">{{notifications.all.count}}</span>
                     </a>
-                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown" id="notifications-dropdown"
-                        data-popper-placement="bottom-end"
-                        style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(-70px, 42px, 0px);">
-
-
-
-                     <div class="d-flex flex-column">
-
-                          {% for i in notifications %}
-
-                  <li class="">
-                    <a class="dropdown-item" href="#">{{i.message}}</a>
-                 </li>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        {% for i in notifications %}
+                        <li class="">
+                            <a class="dropdown-item" href="#">{{i.message}}</a>
+                        </li>
                         {% endfor %}
-                         </div>
-
-
                     </ul>
                 </li>
 
 
 
+                <li class="nav-item dropdown " style="margin-right:20px;">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                       data-mdb-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
+                             class="rounded-circle img-fluid"
+                             height='25' width='25'>
+                    </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu dropdown-menu-end p-1" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Your Account</a></li>
+                        <li><a class="dropdown-item" href="#">Help</a></li>
+                        <li><a class="dropdown-item" href="#">Log Out</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <div class="d-flex align-items-center">
+                    <a href="/login" type="button" class="btn btn-link px-3 me-2">
+                        Login
+                    </a>
+                    <a href="/signup" type="button" class="btn btn-primary me-3">
+                        Sign up for free
+                    </a>
+                    <a
+                            class="btn btn-dark px-3"
+                            href="https://github.com/Callme-Group/Sajilo-Sewa"
+                            role="button"
+                    ><i class="fab fa-github"></i
+                    ></a>
 
+                </div>
+                {%endif%}
             </ul>
 
-            <!-- Left links -->
-
-            <div class="d-flex align-items-center">
-                <a href="/login" type="button" class="btn btn-link px-3 me-2">
-                    Login
-                </a>
-                <a href="/signup" type="button" class="btn btn-primary me-3">
-                    Sign up for free
-                </a>
-                <a
-                        class="btn btn-dark px-3"
-                        href="https://github.com/Callme-Group/Sajilo-Sewa"
-                        role="button"
-                ><i class="fab fa-github"></i
-                ></a>
-
-            </div>
         </div>
         <!-- Collapsible wrapper -->
     </div>
     {{ room_name|json_script:"room-name" }}
-    <script>
+<script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
         const notificationSocket = new WebSocket(
@@ -167,8 +197,13 @@
 
 
 
-    </script>
 
+
+
+
+
+
+</script>
     <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->

@@ -27,6 +27,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dashboard',
     'notification_app',
+    'homepage',
     'crispy_forms',
     'bootstrapform',
     'social_django',
@@ -43,7 +45,6 @@ INSTALLED_APPS = [
     'channels',
     'django_celery_results',
     'django_celery_beat',
-
 
 ]
 
@@ -192,3 +193,5 @@ CELERY_TASK_SELERLIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kathmandu'
 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+

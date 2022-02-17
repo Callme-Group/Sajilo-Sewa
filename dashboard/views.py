@@ -91,7 +91,7 @@ def login(request):
                 if result['success']:
                     print('pass')
                     messages.success(request, "Welcome ...")
-                    return redirect("/signup")
+                    return redirect("/homepage/homepage")
 
                 else:
                     print('fail')
@@ -136,13 +136,18 @@ def category(request):
             maxPrice = request.POST.get("maxPrice")
             service = all_serviecs.filter(price__gte=minPrice, price__lte=maxPrice)
 
-        paginator = Paginator(all_serviecs, 3)
+        paginator = Paginator(all_serviecs, 6)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
+        services = Service.objects.all()
+        categories = Category.objects.all()
+
         context = {
             'service': page_obj,
             'cartItems': cartItems,
             'category': categ,
+            'services':services,
+            'categories':categories,
 
         }
 

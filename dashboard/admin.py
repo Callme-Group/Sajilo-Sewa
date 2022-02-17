@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category,Worker,Service,BlogComment,Order,OrderItem,ShippingAddress
+from .models import Category,Worker,Service,BlogComment,Order,OrderItem,ShippingAddress,Profile
 # Register your models here.
 @admin.register(Category)
 
@@ -24,3 +24,4 @@ admin.site.register(BlogComment)
 admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(ShippingAddress)
+admin.site.register(Profile)

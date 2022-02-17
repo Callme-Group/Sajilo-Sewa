@@ -8,16 +8,21 @@ from django.db.models.signals import post_save
 from django.utils.timezone import now
 
 
+# Create your models here.
+def profile_pic_directory(self,filename):
+
+    return "user{0}/profile_pic/{1}".format(self.user.username,filename)
+
 class Profile(models.Model):  # Model to create profile for users
     objects = None
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE, related_name='profile')
     firstname = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)
     email = models.EmailField()
     phone = models.CharField(max_length=10)
     district = models.CharField(max_length=30, default="Kathmandu")
     city = models.CharField(max_length=30, default="Sundarijal")
-    profile_pic = models.FileField(upload_to='images/profiles', default='sample_user.jpg')
+    profile_pic = models.ImageField(blank=True, upload_to='static/profile/images', default='shaswot.png')
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
