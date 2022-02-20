@@ -29,5 +29,7 @@ urlpatterns = [
     path('process_order/', views.processOrder, name="process_order"),
     path('test/', views.test, name="home"),
     path('celery/', views.celeryt, name="home"),
+    path('search/', views.search, name="Search"),
+    path('logout/', views.logout_request, name="Logout"),
 
 ]

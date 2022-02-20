@@ -7,15 +7,12 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 from dashboard.models import Profile
 from dashboard.models import Category
+from dashboard.models import Service
 
 
 # Create your views here.
 
 
-def homepage(request):
-    categ = Category.objects.all()
-    context = {'cat': categ}
-    return render(request, 'homepage/homepage.html', context)
 
 
 def profile(request):
@@ -42,3 +39,5 @@ def changepass(request):
     else:
         fm = PasswordChangeForm(user=request.user)
     return render(request, 'homepage/changepass.html', {'form': fm})
+
+

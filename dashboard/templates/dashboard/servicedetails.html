@@ -167,7 +167,7 @@
               <div class="d-flex flex-start w-100">
                 <img
                   class="rounded-circle shadow-1-strong me-3"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
+                  src="{{request.user.profile.profile_pic.url}}"
                   alt="avatar"
                   width="40"
                   height="40"
@@ -221,7 +221,7 @@
               <div class="d-flex align-items-center">
                 <img
                   class="rounded-circle shadow-1-strong me-3"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
+                  src="{{request.user.profile.profile_pic.url}}"
                   alt="avatar"
                   width="60"
                   height="60"
@@ -320,7 +320,7 @@
                 />
                 <div class="form-outline w-100">
 <!--                  comment sno -->
-                    <input type="text" name="parentSno" value="{{comment.id}}" />
+                    <input type="hidden" name="parentSno" value="{{comment.id}}" />
                    <input
                     type="hidden"
                     name="serviceID"
@@ -388,7 +388,7 @@
                             </p>
                             <div class="small d-flex justify-content-start">
                                                 {% if request.user in reply.like.all %}
-        <form action="/{{reply.id}}/like" method="POST">
+        <form action="/{{reply.id}}/like" method="POST" >
             {% csrf_token %}
             <button   class=" like-btn border-0 bg-transparent" type=" submit" data-new="{{reply.id}}" id="new"><i class="fas fa-thumbs-up  text-primary  fs-6 me-2"
                  ></i> </button>
