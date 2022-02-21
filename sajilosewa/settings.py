@@ -49,8 +49,8 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-# LOGIN_REDIRECT_URL = "/"
-# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+LOGIN_REDIRECT_URL = "/"
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -173,8 +173,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'khadka03adrsh@gmail.com'
-EMAIL_HOST_PASSWORD = 'Kdk@03adrsh'
+EMAIL_HOST_USER = 'bhattarainabin64@gmail.com'
+EMAIL_HOST_PASSWORD = 'Nabin1412914@'
 
 RECAPTCHA_PUBLIC_KEY = '6Lf1lukdAAAAAN4XwvVi84LdKC0Bxs8dYb4LFDHn'
 RECAPTCHA_PRIVATE_KEY = '6Lf1lukdAAAAAGX18xok6_FoO3-U_WaaGmL1bz3z'

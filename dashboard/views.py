@@ -49,7 +49,7 @@ def logout_request(request):
 
 def search(request):
     service = Service.objects.all()
-    keyword = request.GET.get('query')
+    keyword = request.GET.get('query').capitalize()
     if keyword:
         services = Service.objects.filter(service_name__contains=keyword)
         return render(request, 'dashboard/search.html', {'service': services})
