@@ -5,7 +5,7 @@
     //  unique id is set for all the like
     for (var i = 0; i < like_count.length; i++) {
            like_count[i].id = `like-count${i}`
-           console.log(like_count[i])
+
 
     }
     // for each like button a ajax call is made

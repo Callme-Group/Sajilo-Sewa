@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
 
 ]
+ADMIN_SITE_HEADER = "Sajilo-Sewa Admin"
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"

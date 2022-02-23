@@ -36,3 +36,9 @@ function updateUserOrder(productId, action){
 		    location.reload()
 		});
 }
+
+
+
+// console.log('hello world')
+
+// get all the stars

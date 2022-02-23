@@ -49,9 +49,16 @@ img{
     </div>
     <section class="profile container-sm row m-auto ">
       <div class="profile-info d-flex flex-column text-center col-lg-3  border p-3 bg-white border-4 border-black">
+
         <span class="mx-auto mt-4  "><img class="rounded-9   "
+
             src="{{request.user.profile.profile_pic.url}}"
-            alt="" style="height: 150px; width: 150px; object-fit: cover;" /></span>
+            alt="" style="height: 150px; width: 150px; object-fit: cover;" />
+        </span>
+
+
+
+
         <a href="" class="mt-2 text-black text-opacity-50 fs-4 fw-bold">{{request.user.username}}</a>
         <div class=" ">
           <a href="/profile/{{profile.id}}" type="button" class="btn border border-black border-4"
@@ -63,14 +70,8 @@ img{
       <div class="col m-1 m-lg-4  ">
         <!-- Tabs navs -->
         <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
-          <li class="nav-item" role="presentation">
-            <a class="nav-link active fw-bolder fs-6" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab"
-              aria-controls="ex2-tabs-1" aria-selected="true">About</a>
-          </li>
-          <li class="nav-item" role="presentation">
-            <a class="nav-link fw-bolder fs-6" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab"
-              aria-controls="ex2-tabs-2" aria-selected="false">Services</a>
-          </li>
+
+
           <li class="nav-item" role="presentation">
             <a  class="nav-link fw-bolder fs-6"  href="{% url 'changepass' %}" role="tab"
               aria-controls="ex2-tabs-3" aria-selected="false">Change Password</a>

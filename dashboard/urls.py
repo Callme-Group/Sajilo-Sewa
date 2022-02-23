@@ -31,5 +31,10 @@ urlpatterns = [
     path('celery/', views.celeryt, name="home"),
     path('search/', views.search, name="Search"),
     path('logout/', views.logout_request, name="Logout"),
+    path('about/', views.aboutus, name="About"),
+
 
 ]
+
+
+

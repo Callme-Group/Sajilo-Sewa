@@ -47,6 +47,10 @@ def logout_request(request):
     return redirect("/login")
 
 
+def aboutus(request):
+    return render(request, 'dashboard/aboutus.html')
+
+
 def search(request):
     service = Service.objects.all()
     keyword = request.GET.get('query').capitalize()
@@ -59,6 +63,22 @@ def search(request):
 def dashboard(request):
     services = Service.objects.filter().order_by('-count')[:8]
     if request.user.is_authenticated:
+        try:
+            pro = Profile.objects.get(user=request.user)
+        except Profile.DoesNotExist:
+            fname = request.user.first_name
+            lname = request.user.last_name
+            uname = request.user.username
+            email = request.user.email
+            password = "password"
+            user = User.objects.get(username=uname)
+            Prof = Profile(firstname=fname, lastname=lname, user=user, email=email)
+            Prof.save()
+            user.passsword = password
+            user.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 "Successfully crated password and your default password is: password")
+
         order, created = Order.objects.get_or_create(customer=request.user, complete=False)
 
         cartItems = order.get_cart_items
@@ -202,7 +222,7 @@ def servicedetail(request, id):
     context = {
         'service': each_service,
         'comments': comments,
-        'replyDict': replyDict
+        'replyDict': replyDict,
 
     }
 
@@ -340,30 +360,6 @@ def processOrder(request):
         )
 
     return JsonResponse('Payment submitted..', safe=False)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #
 # import urllib

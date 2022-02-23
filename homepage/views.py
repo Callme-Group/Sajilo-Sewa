@@ -13,10 +13,9 @@ from dashboard.models import Service
 # Create your views here.
 
 
-
-
 def profile(request):
     profile = request.user.profile
+    print(profile)
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
@@ -36,8 +35,5 @@ def changepass(request):
             fm.save()
             return render(request, 'homepage/profile.html')
 
-    else:
-        fm = PasswordChangeForm(user=request.user)
+    fm = PasswordChangeForm(user=request.user)
     return render(request, 'homepage/changepass.html', {'form': fm})
-
-
