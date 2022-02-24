@@ -1,38 +1,207 @@
-
 {% load static %}
 
-<header class="header">
-    <a href="/" class="logo"><i class="fas fa-phone-volume"></i>Sajilo Sewa</a>
+<style>
+        .notification {
+
+            text-decoration: none;
+
+            margin-right: 20px;
+            margin-left: 20px;
+            position: relative;
+            display: inline-block;
+            border-radius: 2px;
+
+        }
 
 
-    <!-- <div class="fas fa-bars"></div> -->
+        .notification .badge {
+            position: absolute;
+            top: -4px;
+            left:9px;
 
-    <nav class="navbar">
-        <a href="/"><i class="fas fa-home"></i>Home</a>
-        <a href="#category"><i class="fas fa-th-large"></i>Category</a>
-        <a href="#service"><i class="fab fa-servicestack"></i>Service</a>
-        <a href="#team"><i class="fas fa-users"></i>Team</a>
-        <a href="#about"><i class="fas fa-address-card"></i>About</a>
-        <a href="{% url 'Signup' %}"><i class="fas fa-sign-in-alt"></i>Sign Up</a>
-    </nav>
+            width:15px;
+            height:15px;
+            background: red;
+            color: white;
+            border-radius:50px;
+            display:flex;
+            justify-content:center;
+            align-items-center:center;
+            vertical-align:center;
+            text-align:center;
 
-    <div class="icons">
-        <div class="fas fa-bars" id="menu-btn"></div>
-        <div class="fas fa-search" id="search-btn"></div>
-        <div class="fas fa-shopping-cart" id="cart-btn"></div>
-        <div class="fas fa-user" id="login-btn"></div>
-    </div>
 
-    <form action="" class="search-form">
-        <input type="search" id="search-box" placeholder="search here...">
-        <label for="search-box" class="fas fa-search"></label>
-    </form>
+            font-size:10px;
 
-    <div class="shopping-cart">
-        <div>
-            <img src="" alt="">
+        }
+
+        .notification-section .dropdown-toggle::after {
+            content: none;
+        }
+
+        .dropdown-toggle::after {
+            color: #fff;
+        }
+
+        #notifications-dropdown li {
+            max-width: 500px;
+            word-wrap: break-word;
+            display: inline-block;
+            white-space: normal;
+        }
+
+        #notifications-dropdown.dropdown-menu {
+            width: 15rem;
+        }
+
+
+
+
+</style>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light " style="">
+    <!-- Container wrapper -->
+    <div class="container-fluid mb-2">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'images/logo3-removebg-preview12.png' %}" height="50" alt="" loading="lazy"
+                 style="color: aliceblue;"/>
+        </a>
+
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse text-black" id="navbarSupportedContent" style="">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto  mb-lg-0">
+                <li class="nav-item ms-2">
+
+                    <a class=" n nav-link mr-2 " href="/"></i>Home</a>
+                </li>
+                <li class=" nav-item ms-2 ">
+                    <a class="n nav-link   " href="{% url 'category' %}">Category</a>
+                </li>
+
+                <li class="nav-item ms-2">
+                    <a class=" n nav-link  " href="#">Contact Us</a>
+                </li>
+
+                 <li class="nav-item ms-2">
+                    <a class=" n nav-link  " href="{% url 'About' %}">About Us</a>
+                </li>
+
+                <li class="nav-item ms-2">
+                    <a class=" n nav-link   " href="#">My List</a>
+                </li>
+            </ul>
+            <!-- Left links -->
+            {% if user.is_authenticated %}
+            <!-- Search form -->
+            <form class=" input-group w-auto  float-left  " style="margin-right:10px;"  method="get" action="/search">
+                <input type="search" class="form-control" placeholder="Type query"  name="query" id="query"/>
+                <button class="btn btn-outline-primary" type="submit" data-mdb-ripple-color="dark"
+                        style="padding: .45rem 1.5rem .35rem;">
+                    Search
+                </button>
+            </form>
+
+            <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-lg-center">
+
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href="{% url 'cart' %}">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge rounded-pill badge-notification bg-danger">{{cartItems}}</span>
+                    </a>
+                </li>
+
+                <!-- Navbar dropdown -->
+                <li class="nav-item dropdown m-0 me-lg-1 ">
+                     <a href="#" class="notification dropdown-toggle d-flex align-items-center  ms-0 ms-lg-3" id="navbarDropdown" role="button"
+                       data-mdb-toggle="dropdown" aria-expanded="false">
+                        <span><i class='fa fa-bell text-black-50'></i></span>
+                        <span class="badge" id="notification-badge">{{notifications.all.count}}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        {% for i in notifications %}
+                        <li class="">
+                            <a class="dropdown-item" href="#">{{i.message}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+
+
+                <li class="nav-item dropdown" style="margin-right:20px;">
+                    <a class="nav-link  " href="#" id="navbarDropdown"
+                       data-mdb-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="{{request.user.profile.profile_pic.url}}"
+                             class="rounded-circle img-fluid"
+                            style="object-fit: cover; height: 30px; width: 30px;">
+                    </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu dropdown-menu-end p-1" >
+                        <li><a class="dropdown-item" href="{% url 'Profile' %}">Your Account</a></li>
+                        <li><a class="dropdown-item" href="#">Help</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Logout' %}">Log Out</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <div class="d-flex align-items-center">
+                    <a href="/login" type="button" class="btn btn-link px-3 me-2">
+                        Login
+                    </a>
+                    <a href="/signup" type="button" class="btn btn-primary me-3">
+                        Sign up for free
+                    </a>
+
+
+                </div>
+                {%endif%}
+            </ul>
+
         </div>
+        <!-- Collapsible wrapper -->
     </div>
+    {{ room_name|json_script:"room-name" }}
+<script>
+        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+
+        const notificationSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/notification/'
+            + roomName
+            + '/'
+        );
+
+        notificationSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            //document.querySelector('#chat-log').value += (data.message + '\n');
+            console.log(data);
+            document.getElementById("notifications-dropdown").innerHTML = "<li class='dropdown-item'>" + data + "</li><hr class='dropdown-divider'>" + document.getElementById("notifications-dropdown").innerHTML;
+            document.getElementById("notification-badge").innerHTML = parseInt(document.getElementById("notification-badge").innerHTML) + 1;
+        };
+
+        notificationSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
 
 
-</header>
+
+
+
+
+
+
+
+
+</script>
+    <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->

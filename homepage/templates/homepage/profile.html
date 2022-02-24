@@ -1,0 +1,203 @@
+{% extends 'layout.html' %}
+
+
+{% load static %}
+{% load bootstrap %}
+{% block css_files %}
+<link rel="stylesheet" href='{% static "css/profile.css" %}'> {% endblock css_files %}
+
+{% block content %}
+<style>
+    .cover-img {
+  width: 100%;
+  height: calc(120px + 10vw) !important;
+  object-fit: cover;
+}
+img{
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+.card-img-top{
+  aspect-ratio: 1/1.2;
+  border-radius: 0 !important;
+}
+.profile-info {
+  position: relative;
+  transform: translateY(-70px);
+}
+@media screen and (min-width: 992px) {
+  .profile-info {
+    width: 20%;
+  }
+  .profile-info-fixed {
+    position: fixed;
+    width: 18%;
+    top: 50px;
+  }
+}
+</style>
+
+<section class="profile-page position-relative bg-third bg-opacity-10">
+    <div class="cover position-relative">
+      <img src="https://www.backgroundart.net/art/boxes1.jpg" alt="" class="cover-img" />
+      <div class=" d-flex position-absolute bottom-0 end-0 theme-color gap-2">
+        <a href="" class="btn border border-2 rounded-pill text-white mb-8 mb-lg-3 me-3">
+          edit cover page
+        </a>
+      </div>
+    </div>
+    <section class="profile container-sm row m-auto ">
+      <div class="profile-info d-flex flex-column text-center col-lg-3  border p-3 bg-white border-4 border-black">
+
+        <span class="mx-auto mt-4  "><img class="rounded-9   "
+
+            src="{{request.user.profile.profile_pic.url}}"
+            alt="" style="height: 150px; width: 150px; object-fit: cover;" />
+        </span>
+
+
+
+
+        <a href="" class="mt-2 text-black text-opacity-50 fs-4 fw-bold">{{request.user.username}}</a>
+        <div class=" ">
+          <a href="/profile/{{profile.id}}" type="button" class="btn border border-black border-4"
+            data-mdb-toggle="modal" data-mdb-target="#exampleModal"> edit profile</a>
+        </div>
+        <span class="f-1 mt-4">Member Since:{{ user.date_joined|date:"d M Y" }}</span>
+      </div>
+      <!-- Tabs navs -->
+      <div class="col m-1 m-lg-4  ">
+        <!-- Tabs navs -->
+        <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
+
+
+          <li class="nav-item" role="presentation">
+            <a  class="nav-link fw-bolder fs-6"  href="{% url 'changepass' %}" role="tab"
+              aria-controls="ex2-tabs-3" aria-selected="false">Change Password</a>
+          </li>
+        </ul>
+        <!-- Tabs navs -->
+        <!-- Tabs content -->
+        <div class="tab-content" id="ex2-content">
+          <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+          </div>
+          <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+            <div class="row row-cols-lg-3 row-col-2 gy-4">
+              <div class="col-6 col-lg-4">
+                <div class=" box bg-white p-2 ">
+                  <img class="card-img-top"
+                    src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F6170e01f8d7639b95a7f2eeb%2FSotheby-s-NFT-Natively-Digital-1-2-sale-Bored-Ape-Yacht-Club--8817-by-Yuga-Labs%2F0x0.png%3Ffit%3Dscale"
+                    alt="Card image cap">
+                </div>
+              </div>
+              <div class="col-6 col-lg-4">
+                <div class="box bg-white p-2">
+                  <img class="card-img-top" src="https://miro.medium.com/max/980/1*3iesg_sr8kC6NYN2iiFHRQ.png"
+                    alt="Card image cap">
+                </div>
+              </div>
+              <div class="col-6 col-lg-4">
+                <div class="box bg-white shadow shadow-4-strong">
+                  <img class="card-img-top"
+                    src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2021/05/merlin_184196631_939fb22d-b909-4205-99d9-b464fb961d32-superJumbo.jpeg?auto=format&q=60&fit=max&w=930"
+                    alt="Card image cap">
+                </div>
+              </div>
+            </div>
+          </div>
+<!--          start-->
+
+          <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
+                 <h1 class="text-center mt-3">Change Password</h1>
+            <div class="col-md-6 m-auto">
+          <form>
+  <!-- Name input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="form5Example1" class="form-control" />
+    <label class="form-label" for="form5Example1"> New Password</label>
+  </div>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email" id="form5Example2" class="form-control" />
+    <label class="form-label" for="form5Example2">Confirm Password</label>
+  </div>
+
+
+  <!-- Submit button -->
+<!--  <button type="submit" class="btn btn-primary btn-block mb-4">change password</button>-->
+            <a type="submit" href="/"> Change Password</a>
+</form>
+              </div>
+          </div>
+<!--          end content-->
+
+        </div>
+        <!-- Tabs content -->
+      </div>
+    </section>
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class=" " method="post" enctype="multipart/form-data">
+              <div class="d-flex justify-content-between">
+                {% csrf_token %}
+                <div class="form-outline mb-4">
+                     {{form.firstname}}
+                  <label class="form-label" for="form1Example1">First Name</label>
+                </div>
+                <div class="form-outline mb-4">
+                     {{form.lastname}}
+                  <label class="form-label" for="form1Example1">Last Name</label>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                     {{form.email}}
+                  <label class="form-label" for="form1Example1">Email address</label>
+                </div>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    {{form.phone}}
+                  <label class="form-label" for="form1Example2">Phone</label>
+                </div>
+              </div>
+              <div class="d-flex">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+               {{form.profile_pic}}
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                {{form.district}}
+                  <label class="form-label" for="form1Example2">District</label>
+                </div>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                {{form.city}}
+                  <label class="form-label" for="form1Example2">city</label>
+                </div>
+              </div>
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block">Save changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+
+{% extends 'layout.html' %}
+
+{% load static %}
+{% block content %}
+<!--<form action="" method="post" novalidate class="mt-5">-->
+<!--        {% csrf_token %}-->
+<!--        {% if form.non_field_errors %}-->
+<!--            {% for error in form.non_field_errors%}-->
+<!--                <p>{{error}}</p>-->
+<!--            {% endfor %}-->
+<!--        {% endif %}-->
+
+<!--        {% for fm in form %}-->
+<!--        {{fm.label_tag}} {{fm}} {{fm.errors|striptags}} <br> <br>-->
+<!--        {% endfor %}-->
+<!--        <input type="submit" value="ChangePassword">-->
+<!--    </form>-->
+<div  class="col-lg-8 mx-auto shadow mb-5" style="margin-top:100px; ">
+<div class="container  mb-5" style="margin-top:20px;">
+	<div class="row justify-content-center d-flex mt-3  shadow p-3">
+         <div class="text-center  ">
+            <h4 class="section-title bg-white text-center text-primary px-3">Change Password</h4>
+        </div>
+<form action="" method="post" novalidate class="mt-5 d-flex flex-column"  >
+  <!-- Name input -->
+     {% csrf_token %}
+
+        {{form.label_tag}}
+         <label class="form-label" for="form5Example2">Old Password</label>
+          {{form.old_password}}
+           <label class="form-label" for="form5Example2">New Password</label>
+          {{form.new_password1}}
+            <label class="form-label" for="form5Example2">Confirm Password</label>
+          {{form.new_password2}}
+
+         {{form.errors|striptags}} <br> <br>
+
+          {% if form.non_field_errors %}
+            {% for error in form.non_field_errors%}
+
+            {% endfor %}
+        {% endif %}
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Change Password</button>
+</form>
+    </div>
+</div>
+</div>
+
+{% endblock %}

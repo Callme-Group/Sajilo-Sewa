@@ -1,0 +1,568 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href='{% static "css/style.css" %}'> {% endblock css_files %}
+
+{% block content %}
+
+
+<div id="carouselExampleCaptions" class="carousel slide" data-mdb-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/bg.jpg'%}" class="d-block w-100" style: height="700" alt="Wild Landscape" />
+            <div class="carousel-caption  d-md-block h-75">
+                <h1 class="text-primary">सजिलो सेवा</h1>
+                <h3 class="text-primary"><strong>सेवा हाम्रो साथ तपाईंको</strong></h3>
+                <a href="#about" class="btn btn-success btn-rounded">Get Started</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/background.jpg'%}" class="d-block w-100" style: height="700" alt="Camera" />
+            <div class="carousel-caption  d-md-block h-75">
+                <h1 class="text-primary">सजिलो सेवा</h1>
+                <h3 class="text-primary"><strong>सेवा हाम्रो साथ तपाईंको</strong></h3>
+                <a href="#about" class="btn btn-success btn-rounded">Get Started</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/bg3.jpg'%}" class="d-block w-100" style: height="700" ; alt="Exotic Fruits" />
+            <div class="carousel-caption  d-md-block h-75">
+                <h1 class="text-primary">सजिलो सेवा</h1>
+                <h3 class="text-primary"><strong>सेवा हाम्रो साथ तपाईंको</strong></h3>
+                <a href="#about" class="btn btn-success btn-rounded">Get Started</a>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleCaptions"
+        data-mdb-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleCaptions"
+        data-mdb-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+
+
+
+
+{% comment %} category section {% endcomment %}
+
+<section id="category-section" class="container-xxl py-5">
+    <div class=" container">
+        <div class="text-center">
+            <h4 class="section-title bg-white text-center text-primary px-3">Categories</h4>
+
+        </div>
+
+        <div class="row row-cols-lg-3">
+            {% for c in cat %}
+
+            <div class="col-md-6 col-lg-4 mt-2 mb-2 ">
+                <div class="card text-start shadow m-auto">
+                    <div class="inner bg-image hover-overlay ripple">
+                         <img src="{{c.image.url}}" class="img-fluid" />
+                        <a href="?service={{c.id}}">
+                            <div class="mask"></div>
+                        </a>
+                    </div>
+                    <div class="card-body bg-primary bg-opacity-10">
+                        <h3 class="card-title text-center">{{c.name}}</h3>
+                        <p class="c-paragraph text-black-50 text-start w-100">
+                            {{c.description}}
+                        </p>
+
+
+
+                        <a href="demo/?service={{c.id}}" class=" btn btn-primary rounded-pill  ">Visit <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+
+        </div>
+    </div>
+</section>
+
+
+
+
+{% comment %} service section starts {% endcomment %}
+
+<section id="services-section" class="container-xxl py-5">
+    <div class=" container">
+
+        <div class="text-center">
+            <h4 class="section-title bg-white text-center text-primary px-3">Services</h4>
+            <h4 class="mb-5">Facilities we provides</h4>
+        </div>
+
+        <div class="row mb-5 mt-5 d-flex justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4 mt-2 mb-2 align-content-md-center">
+                <div class="card border m-auto">
+                    <div class="inner bg-image">
+                        <img src="{% static 'images/house1.jpg' %}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="pic">
+                        <img src="{% static 'images/house1.jpg' %}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">House</h5>
+                        <p class="card-text">Some quick example text to build on the card title.</p>
+                        <a href="#!" class="btn btn-success btn-rounded">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 align-content-md-center">
+                <div class="card m-auto">
+                    <div class="inner bg-image">
+                        <img src="{% static 'images/flat.jpg' %}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="pic">
+                        <img src="{% static 'images/flat.jpg' %}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Flat</h5>
+                        <p class="card-text">Some quick example text to build on the card title.</p>
+                        <a href="#!" class="btn btn-success btn-rounded">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mt-2 mb-2 align-content-md-center">
+                <div class="card m-auto">
+                    <div class="inner bg-image">
+                        <img src="{% static 'images/plumbing.jpg' %}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="pic">
+                        <img src="{% static 'images/plumbing.jpg' %}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Plumbing</h5>
+                        <p class="card-text">Some quick example text to build on the card title.</p>
+                        <a href="#!" class="btn btn-success btn-rounded">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> {% comment %} service section ends here {% endcomment %}
+
+
+
+{% comment %} about section starts {% endcomment %}
+<section id="about-section" class="container-xxl py-5">
+    <div class=" container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                <div class="position-relative h-100">
+                    <img class="img-fluid position-absolute w-100 h-100" src="{% static 'images/about.jpg' %}" alt=""
+                        style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <h4 class="section-title bg-white text-start text-primary pe-3">About Us</h4>
+                <h4 class="mb-4">Welcome to SajiloSewa</h4>
+                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
+                    eos. Clita
+                    erat ipsum et lorem et sit.</p>
+                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
+                    eos. Clita
+                    erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                <div class="row gy-2 gx-4 mb-4">
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
+                    </div>
+                </div>
+                <a class="btn btn-primary btn-rounded py-3 px-5 mt-2" href="">Read More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% comment %} about section ends {% endcomment %}
+
+
+
+
+<!-- our team -->
+
+<div class="container-fluid mt-5">
+
+    <div class="text-center">
+        <h4 class="section-title bg-white text-center text-primary px-3">Our Team</h4>
+        <h4 class="mb-5"> Our team that develop this website. </h4>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="carouselExampleInterval" class="carousel slide" data-mdb-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="container">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-12 col-md-6 col-lg-4 mt-2 mb-2 align-content-md-center">
+                                        <div class="card m-auto">
+                                            <div class="bg-image">
+                                                <img src="{% static 'images/team.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="pic">
+                                                <img src="{% static 'images/team.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Our Team</h5>
+                                                <p class="card-text">Teams to successed SajiloSewa.</p>
+                                                <ul class="list-unstyled list-inline text-center">
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #3b5998;" href="#!"
+                                                            role="button"><i class="fab fa-facebook-f"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #55acee;" href="#!"
+                                                            role="button"><i class="fab fa-twitter"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #dd4b39;" href="#!"
+                                                            role="button"><i class="fab fa-instagram"></i></a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 mt-2 mb-2 align-content-md-center">
+                                        <div class="card m-auto">
+                                            <div class="bg-image">
+                                                <img src="{% static 'images/manish.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="pic">
+                                                <img src="{% static 'images/manish.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Manish Silwal</h5>
+                                                <p class="card-text">Frontend Designer</p>
+                                                <ul class="list-unstyled list-inline text-center">
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #3b5998;" href="#!"
+                                                            role="button"><i class="fab fa-facebook-f"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #55acee;" href="#!"
+                                                            role="button"><i class="fab fa-twitter"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #dd4b39;" href="#!"
+                                                            role="button"><i class="fab fa-instagram"></i></a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 mt-2 mb-2 align-content-md-center">
+                                        <div class="card m-auto">
+                                            <div class="bg-image">
+                                                <img src="{% static 'images/nabin.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="pic">
+                                                <img src="{% static 'images/nabin.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Nabin Bhattarai</h5>
+                                                <p class="card-text">Backend Hero</p>
+                                                <ul class="list-unstyled list-inline text-center">
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #3b5998;" href="#!"
+                                                            role="button"><i class="fab fa-facebook-f"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #55acee;" href="#!"
+                                                            role="button"><i class="fab fa-twitter"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #dd4b39;" href="#!"
+                                                            role="button"><i class="fab fa-instagram"></i></a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-12 col-md-6 col-lg-4 mt-2 mb-2 align-content-md-center">
+                                        <div class="card m-auto">
+                                            <div class="bg-image">
+                                                <img src="{% static 'images/shaswot.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="pic">
+                                                <img src="{% static 'images/shaswot.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Shaswot Malla</h5>
+                                                <p class="card-text">Documentation Specialist</p>
+                                                <ul class="list-unstyled list-inline text-center">
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #3b5998;" href="#!"
+                                                            role="button"><i class="fab fa-facebook-f"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #55acee;" href="#!"
+                                                            role="button"><i class="fab fa-twitter"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #dd4b39;" href="#!"
+                                                            role="button"><i class="fab fa-instagram"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 mt-2 mb-2 align-content-md-center">
+                                        <div class="card m-auto">
+                                            <div class="bg-image">
+                                                <img src="{% static 'images/adrsh.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="pic">
+                                                <img src="{% static 'images/adrsh.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Adrsh Khadka</h5>
+                                                <p class="card-text">Backend Professional</p>
+                                                <ul class="list-unstyled list-inline text-center">
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #3b5998;" href="#!"
+                                                            role="button"><i class="fab fa-facebook-f"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #55acee;" href="#!"
+                                                            role="button"><i class="fab fa-twitter"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #dd4b39;" href="#!"
+                                                            role="button"><i class="fab fa-instagram"></i></a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4 mt-2 mb-2 align-content-md-center">
+                                        <div class="card m-auto">
+                                            <div class="bg-image">
+                                                <img src="{% static 'images/aayush.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="pic">
+                                                <img src="{% static 'images/aayush.png' %}" class="card-img-top"
+                                                    alt="...">
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Aayush Taujale</h5>
+                                                <p class="card-text">Frontend Hero</p>
+                                                <ul class="list-unstyled list-inline text-center">
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #3b5998;" href="#!"
+                                                            role="button"><i class="fab fa-facebook-f"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #55acee;" href="#!"
+                                                            role="button"><i class="fab fa-twitter"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a class="btn btn-primary btn-floating m-1"
+                                                            style="background-color: #dd4b39;" href="#!"
+                                                            role="button"><i class="fab fa-instagram"></i></a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev text-primary " data-mdb-target="#carouselExampleInterval"
+                    type="button" data-mdb-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next text-primary" data-mdb-target="#carouselExampleInterval"
+                    type="button" data-mdb-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- our team  -->
+
+
+
+
+
+
+
+{% comment %} contact form started {% endcomment %}
+
+<section class="container-xxl py-5" id="contact-section">
+    <div class=" container-fluid">
+        <div class="text-center">
+            <h4 class="section-title bg-white text-center text-primary px-3">Contact</h4>
+            <h4 class="mb-5"> Our team Member who contributes to this project</h4>
+        </div>
+
+
+        <div class="row justify-content-center flex-md-wrap d-flex ">
+            <div class=" col-md-7 col-lg-6  mt-5 p-3 Large shadow g-0 mb-2 ">
+                <h1 class="text-primary">Send Message</h1>
+                <form method="post" action="">
+                    <div class="row  ">
+                        <div class="col">
+                            <div class="form-outline mb-4">
+                                <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4">
+                                <label class="form-label" for="form2Example1">FirstName</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline mb-4">
+                                <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4">
+                                <label class="form-label" for="form2Example1">LastName</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col">
+                            <div class="form-outline mb-4">
+                                <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4">
+                                <label class="form-label" for="form2Example1">Email</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline mb-4">
+                                <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4">
+                                <label class="form-label" for="form2Example1">Contact</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <textarea class="form-control pb-4" id="textAreaExample" rows="8"></textarea>
+                            <label class="form-label" for="textAreaExample">Message</label>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <button type="submit" class=" gradient-button gradient-button-1 ">Submit form</button>
+                    </div>
+            </div>
+            </form>
+            <div class=" col-md-5 ms-md--4 ms-lg-4  col-lg-5 shadow  mb-3 mt-5  ">
+                <div class="row">
+                    <div class="col-md-8 shadow pr-md-2 w-100  "
+                        style="background-image: linear-gradient(to right bottom, #0b0f10, #113634, #2c5f44, #6a8644, #c0a646);">
+                        <h5 class="text-white">Contact Info</h5>
+                        <div class="mt-4">
+                            <i class="fas fa-map-marker-alt text-white "
+                                style="background: #00fbff;    padding:6px 8px;  border-radius: 50%;"></i>
+                            <p class="d-inline ms-4 text-white">Softwarica College, kathmandu</p>
+                        </div>
+                        <div class="mt-4">
+                            <i class="fas fa-envelope text-white "
+                                style="background: #00fbff;    padding:6px; border-radius: 50%;"></i>
+                            <p class="d-inline ms-4 text-white">SajiloSewa@gmail.com</p>
+                        </div>
+                        <div class="mt-4 mb-2">
+                            <i class="fas fa-phone-volume  text-white"
+                                style="background: #00fbff;    padding:6px 8px; border-radius: 50%;"></i>
+                            <p class="d-inline ms-4 text-white">021-456798</p>
+                        </div>
+                    </div>
+                    <div class="col=md-12 mt-md-4 w-100 shadow ">
+                        <iframe class="w-100"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.316259514104!2d85.29111322173706!3d27.708955944404007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e0!3m2!1sen!2snp!4v1640803435732!5m2!1sen!2snp"
+                            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+{% endblock %}

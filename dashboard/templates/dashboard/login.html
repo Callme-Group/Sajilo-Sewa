@@ -2,6 +2,75 @@
 {% load static %}
 
 {% block title %}Login{% endblock %}
+<<<<<<< HEAD
+
+{% block content %}
+
+    <section class="h-75 b-0 g-0 border-3 ">
+
+        <div class="container py-5 h-75 ">
+
+          <div class="row d-flex justify-content-center align-content-center h-75 b-0 border-0 ">
+
+            <div class="col ">
+
+                <div class="row g-0  w-100 py-5 ">
+
+                  <div class="col-xl-6 col-lg-5 col-xs-5 d-none d-xl-block border-0 h-75 ">
+                    <img
+                      src="{% static 'images/login1.png' %}"
+                      class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
+                    />
+                  </div>
+
+                  <div class="col-xl-4 col-lg-7 col-xs-5 border-0 m-lg-auto shadow">
+                            <div class="card-body p-md-5 text-black">
+                                <h1 class="display-5 text-center text-secondary"> Sajilo Sewa</h1>
+                              <form class="text-center border border-light " action="" method="post">
+                                  {% csrf_token %}
+
+                                    <p class="h4 mb-4">Sign in</p>
+
+                                    <!-- Username -->
+
+                                  <div class="col-xl-12 m-auto">
+                                     <div class="form-outline mb-4">
+                                          <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" >
+                                          <label class="form-label" for="form2Example1">Username</label>
+                                     </div>
+                                  </div>
+                                    <!-- Password -->
+                                   <div class="col-xl-12  m-auto">
+                                      <div class="form-outline mb-4">
+                                              <input type="password" name="password" id="defaultLoginFormEmail" class="form-control mb-4" >
+                                              <label class="form-label" for="form2Example1">Password</label>
+                                      </div>
+                                   </div>
+                                  <div class="g-recaptcha" data-sitekey="6Lf1lukdAAAAAN4XwvVi84LdKC0Bxs8dYb4LFDHn"></div>
+
+                                    <div class="d-flex justify-content-around">
+                                        <div>
+                                            <!-- Remember me -->
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <!-- Forgot password -->
+                                            <a href="{% url 'reset_password' %}">Forgot password?</a>
+                                        </div>
+                            </div>
+
+                            <!-- Sign in button -->
+                            <button class="btn btn-primary btn-block my-4" type="submit">Sign in</button>
+
+                            <!-- Register -->
+                            <p>Not a member?
+                                <a href="{% url 'Signup' %}">Register</a></p>
+           </form>
+=======
 {% block content %}
 
 <section class="login py-5 bg-light">
@@ -28,14 +97,16 @@
                         <div class="offset-1 col-lg-10">
                             <button class="btn1">Login</button>
                         </div>
+>>>>>>> master
                     </div>
-                </form>
-                <p> Or Login with</p>
-                <span><i class="fab fa-facebook"></i></span>
-                <span><i class="fab fa-google-plus"></i></span>
+
+                  </div>
+                </div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </section>
+
+
 
 {% endblock %}

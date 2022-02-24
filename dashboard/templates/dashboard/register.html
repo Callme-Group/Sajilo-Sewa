@@ -1,9 +1,60 @@
 {% extends 'layout.html' %}
+{% load bootstrap %}
+
+
 {% load static %}
 
+<<<<<<< HEAD
+{% block title %}Registration{% endblock %}
+=======
 {% block title %}registration{% endblock %}
+>>>>>>> master
 {% block content %}
+<section class="h-75 b-0 g-0 border-3 ">
+        <div class="container py-5 h-100 ">
+          <div class="row d-flex justify-content-center align-content-center h-75 b-0 border-0 ">
+            <div class="col ">
 
+<<<<<<< HEAD
+                <div class="row g-0  w-100 py-5 ">
+                  <div class="col-xl-6 col-lg-5 col-xs-5 d-none d-xl-block border-0 ">
+                    <img
+                      src="{% static 'images/registration.jpg' %}"
+                      class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
+                    />
+                  </div>
+                  <div class="col-xl-5 col-lg-7 col-xs-5 border-0 m-lg-auto shadow">
+                    <div class="card-body p-md-5 text-black">
+                      <h3 class="mb-5  text-center">Registration Form</h3>
+
+                      <form method="post" action="">
+                          {% csrf_token %}
+
+
+                      <div class="row border-0">
+                        <div class="col-md-6 mb-4 col-xs-6">
+                          <div class="form-outline mb-4">
+                              {{form.first_name}}
+                                <label class="form-label" for="form2Example1">First name</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6 mb-4">
+
+                           <div class="form-outline mb-4">
+                                 {{form.last_name}}
+                                <label class="form-label" for="form2Example1">Last name</label>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 mb-4 col-xs-6">
+                           <div class="form-outline mb-4">
+                                {{form.username}}
+                                <label class="form-label" for="form2Example1">Username</label>
+                            </div>
+=======
 <section class="login py-5 bg-light">
     <div class="container">
         <div class="row g-0">
@@ -47,15 +98,58 @@
                     <div class="form-row py-3">
                         <div class="offset-1 col-lg-10">
                             <button class="btn1">Register</button>
+>>>>>>> master
                         </div>
+                        <div class="col-md-6 mb-4 col-xs-6">
+                           <div class="form-outline mb-4">
+                               {{form.email}}
+                                <label class="form-label" for="form2Example1">Email</label>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 mb-3 col-xs-6">
+                          <div class="form-outline mb-2">
+                              {{form.password1}}
+                                <label class="form-label" for="form2Example1">Password</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-3 col-xs-6">
+                           <div class="form-outline mb-2">
+                               {{form.password2}}
+                                <label class="form-label" for="form2Example1">Confirm Password</label>
+                            </div>
+                        </div>
+                      </div>
+
+                       {% for field, error in form.errors.items %}
+                            <div class="alert alert-danger my-3 p-1 w-100 text-center" role="alert">
+                                {{ error|striptags }}
+                            </div>
+                        {% endfor %}
+                       <button type="submit" class="btn btn-primary btn-block mb-2">Sign in</button>
+
+                      <div class="text-center">
+                        <p>or sign up with:</p>
+                          <hr>
+                        <a type="button" href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-google"></i></a>
+
+                        <a type="button" href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary btn-floating mx-1">  <i class="fab fa-facebook"></i></a>
+
+                      </div>
+                    </form>
                     </div>
-                </form>
-                <p> Or Login with</p>
-                <span><i class="fab fa-facebook"></i></span>
-                <span><i class="fab fa-google-plus"></i></span>
+
+                  </div>
+                </div>
+
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </section>
+
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 {% endblock %}
