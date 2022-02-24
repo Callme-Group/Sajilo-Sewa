@@ -7,8 +7,6 @@ from django.dispatch import receiver
 from django_celery_beat.models import MINUTES, PeriodicTask, CrontabSchedule, PeriodicTasks
 import json
 
-
-# Create your models here.
 class BroadcastNotification(models.Model):
     message = models.TextField()
     broadcast_on = models.DateTimeField()
@@ -19,8 +17,6 @@ class BroadcastNotification(models.Model):
 
     class Meta:
         ordering = ['-broadcast_on']
-
-
 
 @receiver(post_save, sender=BroadcastNotification)
 def notification_handler(sender, instance, created, **kwargs):

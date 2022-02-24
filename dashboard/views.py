@@ -139,7 +139,7 @@ def login(request):
                 ''' End reCAPTCHA validation '''
                 if result['success']:
                     auth.login(request, user)
-                    messages.success(request, "Welcome ...")
+                    messages.success(request, "Welcome  to Homepage " + uname)
                     return redirect("/")
 
                 else:
@@ -288,7 +288,7 @@ def cart(request):
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
     context = {'items': items, 'order': order, 'cartItems': cartItems}
-    print(items)
+
 
     return render(request, 'dashboard/cart.html', context)
 
@@ -310,8 +310,6 @@ def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']
-    print('Action:', action)
-    print('Product:', productId)
 
     customer = request.user
     product = Service.objects.get(id=productId)

@@ -1,6 +1,7 @@
 {% extends 'layout.html'%}
 {% load static %}
-
+{% block title %}Category{% endblock %}
+{% block js %}
 {% block css_files %}
 <style>
     .card{
@@ -9,6 +10,7 @@
 </style>
 <link rel="stylesheet" href='{% static "css/style.css" %}'>
 {% endblock css_files %}
+
 {% block content%}
 
 <section id="category-section" class="container-xxl py-5">

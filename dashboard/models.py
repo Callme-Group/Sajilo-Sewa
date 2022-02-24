@@ -13,7 +13,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 def profile_pic_directory(self, filename):
     return "user{0}/profile_pic/{1}".format(self.user.username, filename)
 
-
 class Profile(models.Model):  # Model to create profile for users
     objects = None
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE, related_name='profile')
@@ -28,10 +27,6 @@ class Profile(models.Model):  # Model to create profile for users
 
     def __str__(self):
         return self.firstname + " " + self.lastname
-
-
-# Create your models here.
-
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -66,9 +61,6 @@ class Service(models.Model):
 
     def __str__(self):
         return self.service_name
-
-
-
 
 class BlogComment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -113,7 +105,6 @@ class Order(models.Model):
         orderitems = self.orderitem_set.all()
         total = sum([item.quantity for item in orderitems])
         return total
-
 
 # for cart which hase multiple services with order
 class OrderItem(models.Model):
